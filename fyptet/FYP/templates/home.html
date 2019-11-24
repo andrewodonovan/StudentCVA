@@ -1,0 +1,18 @@
+<html>
+
+    <head>
+        <title>CVAssistant Home</title>
+
+    </head>
+    <body>
+        <h1>CV Assistant Homepage</h1>
+        {% if user.is_authenticated %}
+        <p>  {{ user.username }}</p>
+     <p><a href="{% url 'account_logout' %}">Log Out</a></p>
+        {% else %}
+        <p><a href="{% url 'account_signup' %}">Sign Up</a></p>
+        <p><a href="{% url 'account_login' %}">Log In</a></p>
+         <p><a href="{% provider_login_url 'google' %}">Google Login</a></p>
+        {% endif %}
+    </body>
+</html>

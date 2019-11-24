@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+  <!-- Page Header, Full sized Image -->
+
+<title> StudentCVA | {%block title %}
+Create A CV
+    {% endblock %} </title>
+
+{% block content %}
+  <section id="createCV">
+		<div class="container-fluid d-flex flex-column bg-light opct opacity-20" id="aboutContainer">
+			<div class="row d-flex flex-column my-auto mx-auto text-center align-items-center">
+				<div class="d-flex flex-column col-12 mx-auto my-auto align-items-center text-center">
+					<h1>Create Your CV</h1>
+					<hr />
+				</div>
+				<!--Start card -->
+					<div class="createCvCard text-justify">
+						<h4>Please enter URL</h3>
+						</hr>
+
+						
+						<div class="input-group">
+							<input type="text" class="form-control">
+						</div>
+						
+						<div class="input-group">
+							<button class="form-control btn btn-success">Process</button>
+						</div>
+						
+					</div>
+					
+					<!--End card -->
+					
+					
+			</div>
+			
+			<div class="row d-flex flex-column my-auto mx-auto text-center align-items-center">
+				<div class="d-flex flex-column col-12 mx-auto my-auto align-items-center text-center">
+					<h2>Previously Created CVs...</h1>
+					<hr />
+				</div>
+			</div>
+			
+			<div class="row  d-flex my-auto mx-auto text-center align-items-center">
+				<div class="prevCvContainer align-items-center">
+					<div class="col-4 prevCV align-items-center">
+						<img class="img-responsive" src="{{'static/cv1.jpg'}}" />
+					</div>
+				</div>	
+				
+				<div class="prevCvContainer align-items-center">
+					<div class="col-4 prevCV align-items-center">
+						<img class="img-responsive" src="{{'static/cv1.jpg'}}" />
+					</div>
+				</div>
+				
+				<div class="prevCvContainer align-items-center">
+					<div class="col-4  prevCV align-items-center">
+						<img class="img-responsive" src="{{'static/cv1.jpg'}}" />
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</section>
+{% endblock %}
