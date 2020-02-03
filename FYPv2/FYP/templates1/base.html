@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	{% load staticfiles %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>StudentCVA | Home</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- FontAwesome -->
+
+  <script src="https://kit.fontawesome.com/8e4fedabed.js" crossorigin="anonymous"></script>
+  
+	<script>
+		var eightyYearsago = new Date();
+		var twentyYearsAgo = new Date();
+	
+		twentyYearsAgo.setTime(twentyYears.valueOf() - 20 * 365 * 24 * 60 * 60 * 1000);
+		eightyYearsAgo.setTime(twentyYears.valueOf() - 80 * 365 * 24 * 60 * 60 * 1000);
+		
+		
+		var today = new Date().toISOString().split("T")[0];
+		dob.value = twentyYearsAgo <!-- Code to set the calendar default date to 20 years ago today -->
+		dob.min = eightyYearsAgo <!-- Code to set the calendar min date to 80 years ago today -->
+		dob.max	= today; <!-- Code to set the calendar max date to todays date-->
+	</script>
+	
+</head>
+
+<body>
+{% block content %}
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">StudentCVA</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+		  
+		  <li class="nav-item active">
+            <a class="nav-link" href="profile.html">
+				Profile
+            </a>
+          </li>
+		  
+		  <li class="nav-item active">
+            <a class="nav-link" href="createcv.html">
+				Create CV
+            </a>
+          </li>
+		  
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  Andrew &emsp; <i class="fas fa-user"></i>
+			</a>
+			<div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item text-white" href="#">Profile</a>
+				<a class="dropdown-item text-white" href="#">Settings</a>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item text-white" href="#">Log Out</a>
+			</div>
+		  </li>
+		  
+        </ul>
+      </div>
+    </div>
+  </nav>
+  {% endblock %}
+
+  <!-- Page Header, Full sized Image -->
+  <header class="masthead my-auto mx-auto d-flex" id="landingPageHeader">
+	<div class="container-fluid d-flex">
+		<div class="row d-flex flex-column my-auto mx-auto text-center text-light align-items-center">
+			<div class="d-flex col-12 mx-auto my-auto align-items-center text-center" >
+				<h1>StudentCVA</h1>
+			</div>
+			<div id="landingPageHeaderButtons" class="d-flex col-12 mx-auto my-auto align-items-center text-center">
+				<button class="form-control btn-dark">Sign Up</button>
+				<button class="form-control btn-light">Sign In</button>
+			</div>
+		</div>
+	</div>
+  </header>
+  
+  <!--==========================
+      About Us Section
+    ============================-->
+   <section id="about">
+		<div class="container-fluid d-flex flex-column bg-light opct opacity-20" id="aboutContainer">
+			<div class="row d-flex flex-column my-auto mx-auto text-center align-items-center">
+				<div class="d-flex flex-column col-12 mx-auto my-auto align-items-center text-center w-75">
+					<h1>About Us</h1>
+					<p class="text-justify">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim nunc faucibus a pellentesque sit amet porttitor. Ultrices mi tempus imperdiet nulla. At elementum eu facilisis sed odio. Ullamcorper malesuada proin libero nunc consequat. Nunc sed id semper risus in hendrerit gravida rutrum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Tristique senectus et netus et malesuada fames ac turpis. Magna fringilla urna porttitor rhoncus dolor purus non enim praesent. Amet cursus sit amet dictum sit amet justo. Tincidunt eget nullam non nisi. Porta lorem mollis aliquam ut porttitor leo a diam. Id diam vel quam elementum pulvinar etiam.
+						Dictum at tempor commodo ullamcorper a lacus. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien.
+						Ut etiam sit amet nisl purus in mollis nunc sed.
+					</p>
+					<p class="text-justify">
+						Feugiat in fermentum posuere urna nec tincidunt praesent semper.
+						Mattis pellentesque id nibh tortor id aliquet. A scelerisque purus semper eget duis at tellus.
+						Eleifend donec pretium vulputate sapien nec sagittis aliquam. Enim ut tellus elementum sagittis.
+						Morbi tristique senectus et netus et malesuada fames ac turpis.
+						Quisque non tellus orci ac auctor augue mauris augue.
+						Proin fermentum leo vel orci porta non pulvinar.
+						Ullamcorper sit amet risus nullam eget felis eget.
+						Sed risus ultricies tristique nulla aliquet enim tortor at auctor.
+						Sed ullamcorper morbi tincidunt ornare massa eget egestas purus.
+					</p>
+				</div>
+			</div>
+		</div>
+  </section>
+  
+  <section id="signUp">
+	  <div class="container-fluid d-flex" id="formContainer">
+			<div class="row d-flex my-auto mx-auto text-center text-dark align-items-center">
+				<div class="d-flex col-12 mx-auto my-auto" id="form">
+				<form id="signupForm" class="form-group needs-validation justify-content-center">
+						
+						<h1 class="text-dark">Sign Up</h1>				
+						
+						<div class="input-group">
+						  <input type="text" id="fName" name="fName" class="form-control" placeholder="First Name" required="true">
+						  <input type="text" id="lName" name="lName" class="form-control" placeholder="Last Name" required="true">
+						</div>
+						
+						
+						<div class="input-group">	
+							<input id="email" name="email" type="text"  placeholder="Email" class="form-control" required="true"/>
+						</div>
+						<div class="input-group">
+							<input id="emailConfirm" name="emailConfirm" type="text"  placeholder="Confirm Email" class="form-control" required="true"/>
+						</div>
+						
+						<div class="input-group">
+							<input id="pass" name="pass" type="password" placeholder="Password" class="form-control" required="true"/>
+						</div>
+						
+						<div class="input-group">
+							<input id="passConfirm" name="passConfirm" type="password" placeholder="Confirm Password" class="form-control" required="true"/>
+						</div>
+						
+						<div class="input-group">
+							<input id="dob" name="dob" type="date" class="form-control" required="true">
+						</div>
+						
+						<div class="input-group">
+							<button id="btnSignUpSubmit" name="btnSignUpSubmit" type="submit" class="form-control btn-success">Submit</button>
+							<button id="btnSignUpCancel" name="btnSignUpCancel" type="cancel" class="form-control btn-danger">Cancel</button>
+						</div>
+				
+					</form>
+			</div>
+		</div>
+	  </div>
+  </section>
+  
+<section id="footer">
+   <footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+      <small>Copyright &copy; Andrew O' Donovan</small>
+    </div>
+  </footer>
+  
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.slim.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</section>
+</body>
+
+</html>
