@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>StudentCVA | Home</title>
+
+    <!-- Bootstrap core CSS -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" />
+
+
+    <!-- FontAwesome -->
+
+    <script src="https://kit.fontawesome.com/8e4fedabed.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+{% load socialaccount %}
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="">StudentCVA</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="../templates1/profile.html">
+                        Profile
+                    </a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="../templates1/createcv.html">
+                        Create CV
+                    </a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        {{ user.username }} &emsp; <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item text-white" href="#">Profile</a>
+                        <a class="dropdown-item text-white" href="#">Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-white" href="{% url 'account_logout' %}">Log Out</a>
+                    </div>
+                </li>
+                {% else %}
+                <li class="nav-item active">
+                    <a href="{% url 'account_login' %}">Log In </a> &emsp; <i class="fas fa-user"></i>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header, Full sized Image -->
+<header class="masthead my-auto mx-auto d-flex" id="landingPageHeader">
+    <div class="container-fluid d-flex">
+        <div class="row d-flex flex-column my-auto mx-auto text-center text-light align-items-center">
+            <div class="d-flex col-12 mx-auto my-auto align-items-center text-center">
+                <h1>StudentCVA</h1>
+            </div>
+            <div id="landingPageHeaderButtons" class="d-flex col-12 mx-auto my-auto align-items-center text-center">
+                <button class="form-control btn-light"><a href="{% url 'account_signup' %}">Sign Up</a></button>
+                <button class="form-control btn-light"><a href="{% url 'account_login' %}">Log In</a></button>
+                <button class="form-control btn-danger"><a href="{% provider_login_url 'google' %}"><i style="color: #fff;" class="fab fa-google"></i></a>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--==========================
+    About Us Section
+  ============================-->
+<section id="about">
+    <div class="container-fluid d-flex flex-column bg-light opct opacity-20" id="aboutContainer">
+        <div class="row d-flex flex-column my-auto mx-auto text-center align-items-center">
+            <div class="d-flex flex-column col-12 mx-auto my-auto align-items-center text-center w-75">
+                <h1>About Us</h1>
+                <p class="text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna
+                    aliqua. Enim nunc faucibus a pellentesque sit amet porttitor. Ultrices mi tempus imperdiet nulla. At
+                    elementum eu
+                    facilisis sed odio. Ullamcorper malesuada proin libero nunc consequat. Nunc sed id semper risus in
+                    hendrerit gravida
+                    rutrum. Venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam. Tristique senectus et
+                    netus et
+                    malesuada fames ac turpis. Magna fringilla urna porttitor rhoncus dolor purus non enim praesent.
+                    Amet cursus sit
+                    amet dictum sit amet justo. Tincidunt eget nullam non nisi. Porta lorem mollis aliquam ut porttitor
+                    leo a diam. Id
+                    diam vel quam elementum pulvinar etiam.
+                    Dictum at tempor commodo ullamcorper a lacus. Commodo quis imperdiet massa tincidunt nunc pulvinar
+                    sapien.
+                    Ut etiam sit amet nisl purus in mollis nunc sed.
+                </p>
+                <p class="text-justify">
+                    Feugiat in fermentum posuere urna nec tincidunt praesent semper.
+                    Mattis pellentesque id nibh tortor id aliquet. A scelerisque purus semper eget duis at tellus.
+                    Eleifend donec pretium vulputate sapien nec sagittis aliquam. Enim ut tellus elementum sagittis.
+                    Morbi tristique senectus et netus et malesuada fames ac turpis.
+                    Quisque non tellus orci ac auctor augue mauris augue.
+                    Proin fermentum leo vel orci porta non pulvinar.
+                    Ullamcorper sit amet risus nullam eget felis eget.
+                    Sed risus ultricies tristique nulla aliquet enim tortor at auctor.
+                    Sed ullamcorper morbi tincidunt ornare massa eget egestas purus.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="footer">
+    <footer class="py-4 bg-dark text-white">
+        <div class="container text-center">
+            <small>Copyright &copy; Andrew O' Donovan</small>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</section>
+</body>
+
+</html>
