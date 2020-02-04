@@ -19,6 +19,19 @@
 #landingPageHeader h1{
 	text-shadow: 2px 2px #000;
 	color: #FFF;
+	margin: 2vh auto 2vh auto;
+}
+
+
+#landingPageHeaderButtons button{
+	width: 10rem;
+	height: 3rem;
+	margin:0 3vw 0 3px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+}
+#landingPageHeaderButtons button a{
+	color:  #000;
+	font-weight: 600;
 }
 
 .profileCard{
@@ -75,7 +88,7 @@
 	#aboutContainer{
 		padding: 4rem 0 4rem 0;
 	}
-	
+
 	#signupForm{
 		padding: 4rem 0 4rem 0;
 	}
@@ -99,4 +112,59 @@
 	.profileCard input, .profileCard label, .profileCard select{
 		width: 50%;
 	}
+
+	  /*
+=====================================================
+               AOD ALLAUTH CSS CODE
+=====================================================
+*/
+.account-header{
+	min-width: 25vw;
+	max-width: 30px;
+	margin: 4vh auto 4vh auto;
+	padding: 0;
 }
+.account-form{
+	min-width: 25vw;
+	max-width: 30px;
+	margin: 5vh auto 5vh auto;
+	padding: 0;
+	background: #FFF;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	padding: 1rem;
+
+}
+
+.account-form form{
+	margin:auto;
+}
+
+/*.account-login-form input, .account-login-form label{*/
+/*	min-width: 8px;*/
+/*}*/
+
+
+
+.account-messages{
+	background: #ffd700;
+	padding: 0.2rem;
+	margin: 0.5rem;
+	border-width: 0.1rem;
+	border-radius: 0.5rem;
+	border-style: solid;
+	border-color: #000;
+	width: 25vw;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+.account-form input[type=text], .account-form input[type=password]{
+	border-radius: 0.25rem;
+	width: 15vw;
+}
+/*
+=====================================================
+                     AOD CSS CODE
+=====================================================
+*/
+}
+
