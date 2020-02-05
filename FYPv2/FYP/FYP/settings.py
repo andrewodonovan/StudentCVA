@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',  # new
 
     'pages',
-    'users'
+    'users',
+    'userprofile'
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
