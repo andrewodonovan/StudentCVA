@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
     'pages',
     'users',
-    'userprofile'
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'

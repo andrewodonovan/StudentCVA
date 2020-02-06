@@ -97,7 +97,20 @@
 
 <section id="profileContent">
     <div>
-        <p>Profile</p>
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td>{{ user.username }}</td>
+            </tr>
+             <tr>
+                <td>Email:</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <td>Full Name:</td>
+                <td>{{ user.userprofile.UserName }}</td>
+            </tr>
+        </table>
     </div>
 </section>
 
