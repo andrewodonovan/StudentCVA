@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+{% load crispy_forms_tags %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -12,6 +12,7 @@
 
     <!-- Bootstrap core CSS -->
     {% load static %}
+
     <link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" />
 
 
@@ -57,10 +58,10 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-                        {{ user.username }} &emsp; <i class="fas fa-user"></i>
+                        {{  user.userprofile.UserName }} &emsp; <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-white" href="#">Profile</a>
+                        <a class="dropdown-item text-white" href="{% url 'profile' %}">Profile</a>
                         <a class="dropdown-item text-white" href="#">Settings</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-white" href="{% url 'account_logout' %}">Log Out</a>
@@ -96,24 +97,32 @@
 ==============================-->
 
 <section id="profileContent">
-    <div>
-        <table>
-            <tr>
-                <td>Username:</td>
-                <td>{{ user.username }}</td>
-            </tr>
-             <tr>
-                <td>Email:</td>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <td>Full Name:</td>
-                <td>{{ user.userprofile.UserName }}</td>
-            </tr>
-        </table>
-    </div>
+     <div class="container-fluid d-flex">
+        <div class="row d-flex flex-column my-auto mx-auto text-center align-items-center">
+           <form method="POST">
+               {% csrf_token %}
+               <fieldset class="form-group">
+                   <legend class="border-bottom mb-4">Profile Info</legend>
+
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+               </fieldset>
+               <div class="form-group">
+                   <button class="btn btn-light" type="submit">Update</button>
+               </div>
+           </form>
+        </div>
+     </div>
 </section>
 
+<!-- <div class="d-flex col-12 mx-auto my-auto align-items-center text-center">-->
+<!--                <div><h1>{{  user.userprofile.UserName }}</h1></div>-->
+<!--            </div>-->
+<!--            <div><i><h5>{{  user.userprofile.UserDOB }}</h5></i></div>-->
+<!--            <div><i><h5>{{ user.email }}</h5></i></div>-->
+<!--            <div><i><h5>{{  user.userprofile.UserPhone }}</h5></i></div>-->
+<!--            <div><i><h5>{{  user.userprofile.UserAddress }}</h5></i></div>-->
+<!--  </div> -->
 <!--==========================
             Footer
 ==============================-->

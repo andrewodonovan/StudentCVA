@@ -36,8 +36,14 @@
 
 #profileContent{
 	height: 60vh;
+	width: 75vw;
+	margin: 2vh auto;
+	box-shadow: 6px 6px 10px 6px rgba(0, 0, 0, 0.8);
 }
 
+#profileContent div h5{
+
+}
 
 #landingPageHeaderButtons button{
 	width: 10rem;
@@ -48,22 +54,6 @@
 #landingPageHeaderButtons button a{
 	color:  #000;
 	font-weight: 600;
-}
-
-.profileCard{
-	background: #FFF;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	padding: 1rem;
-	min-width: 40vw;
-	max-width: h0vw;
-	min-height: 30vh;
-	margin: 2rem 0 2rem 0;
-}
-
-
-
-.profileCard .input-group{
-	margin: 0.5rem 0 0.5rem 0;
 }
 
 .createCvCard{
@@ -104,10 +94,6 @@
 	#aboutContainer{
 		padding: 4rem 0 4rem 0;
 	}
-
-	#signupForm{
-		padding: 4rem 0 4rem 0;
-	}
 }
 
 	
@@ -124,10 +110,7 @@
 	#signupForm{
 		padding: 2rem 0 2rem 0;
 	}
-	
-	.profileCard input, .profileCard label, .profileCard select{
-		width: 50%;
-	}
+
 
 	  /*
 =====================================================

@@ -41,11 +41,11 @@ INSTALLED_APPS = [
     'allauth.account',  # new
     'allauth.socialaccount',  # new
     'allauth.socialaccount.providers.google',  # new
-
+    'crispy_forms',
     'pages',
     'users',
 ]
-
+DEFAULT_FROM_EMAIL = 'andrewodonovanfyp@gmail.com'
 AUTH_USER_MODEL = 'users.CustomUser'
 
 MIDDLEWARE = [
@@ -138,3 +138,5 @@ AUTHENTICATION_BACKENDS = (
 SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
