@@ -61,8 +61,11 @@
                     </a>
                     <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item text-white" href="{% url 'profile' %}">Profile</a>
-                        <a class="dropdown-item text-white" href="#">Settings</a>
+                        {% if user.is_staff %}
+                        <a class="dropdown-item text-white" href="{% url 'admin:index' %}">Admin</a>
                         <div class="dropdown-divider"></div>
+                        {% else %}
+                        {% endif %}
                         <a class="dropdown-item text-white" href="{% url 'account_logout' %}">Log Out</a>
                     </div>
                 </li>
