@@ -48,7 +48,7 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="../templates1/createcv.html">
+                    <a class="nav-link" href="{% url 'cv' %}">
                         Create CV
                     </a>
                 </li>
@@ -70,8 +70,10 @@
                     </div>
                 </li>
                 {% else %}
+
                 <li class="nav-item active">
-                    <a href="{% url 'account_login' %}">Log In </a> &emsp; <i class="fas fa-user"></i>
+                    <a class="nav-link" href="{% url 'account_login' %}">
+                        <b><i>Log In</i></b>
                     </a>
                 </li>
                 {% endif %}
@@ -84,7 +86,7 @@
 <section id="footer">
 <footer class="py-4 bg-dark text-white">
     <div class="container text-center">
-        <small>Copyright &copy; Andrew O' Donovan</small>
+        <small>Copyright &copy; <a href="http://www.andrewodonovanwebdesign.com">Andrew O' Donovan</a></small>
     </div>
 </footer>
 

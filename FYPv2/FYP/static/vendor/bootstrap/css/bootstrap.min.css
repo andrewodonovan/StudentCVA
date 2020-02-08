@@ -16,10 +16,9 @@
 	height: calc(100vh - 56px);
 }
 #profilePageHeader{
-	background: url(../../../profileheader.jpg);
+	background: url(../../../bg.jpg) center center no-repeat;
 	min-height: 25vh;
-	background-position: center;
-	background-size: cover;
+
 }
 
 #landingPageHeader h1{
@@ -35,14 +34,13 @@
 }
 
 #profileContent{
-	height: 60vh;
-	width: 75vw;
+	width: 50%;
 	margin: 2vh auto;
 	box-shadow: 6px 6px 10px 6px rgba(0, 0, 0, 0.8);
 }
 
-#profileContent div h5{
-
+#profileContent input{
+	width: 50%;
 }
 
 #landingPageHeaderButtons button{

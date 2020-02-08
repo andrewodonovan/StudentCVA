@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',  # new
     'allauth.socialaccount.providers.google',  # new
     'crispy_forms',
+    'cv',
     'pages',
     'users',
 ]
