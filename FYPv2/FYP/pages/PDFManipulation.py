@@ -149,7 +149,7 @@ class PDFManipulation:
         filename = file_name_format.replace('#', str(i))
         # ... Open the file ...
         out = open(filename, 'r')
-        # ... load the section arrays ..
+        # ... load the s+ection arrays ..
         sections[i] = out.readlines()
         # .. and stop reading from the file.
         out.close()
