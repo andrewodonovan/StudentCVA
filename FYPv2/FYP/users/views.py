@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 
-from .forms import CustomUserCreationForm, CustomUserChangeForm, ProfileUpdateForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 
 class SignUpView(CreateView):
@@ -19,19 +19,16 @@ class SignUpView(CreateView):
 @login_required
 def ProfileView(request):
     if request.method == 'POST':
-        u_form = CustomUserChangeForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.userprofile)
-        if u_form.is_valid() and p_form.is_valid():
+        u_form = CustomUserCreationForm(request.POST, instance=request.user)
+        if u_form.is_valid():
             u_form.save()
-            p_form.save()
+
             messages.success(request, f'Your account has been updated!')
             return redirect('profile')
     else:
         u_form = CustomUserChangeForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.userprofile)
         messages.success(request, f'Your account has been updated!')
     context = {
         'u_form': u_form,
-        'p_form': p_form
     }
     return render(request, 'profile.html', context)
