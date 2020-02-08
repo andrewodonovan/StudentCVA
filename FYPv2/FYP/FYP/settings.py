@@ -60,7 +60,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'FYP.urls'
-
+ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

@@ -3,6 +3,9 @@
 {% block title %}CV{% endblock %}
 
 {% block content %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" />
+
 <!-- Page Header, Full sized Image -->
 <header class="my-auto mx-auto d-flex" id="profilePageHeader">
     <div class="container-fluid d-flex">
@@ -13,5 +16,26 @@
         </div>
     </div>
 </header>
+
+<section id="cvContent" class="studentCVA-content">
+
+     <div class="container-fluid d-flex">
+        <div class="row d-flex flex-column my-auto mx-auto">
+           <form method="POST" enctype="multipart/form-data">
+               <fieldset class="form-group">
+                   <legend class="border-bottom mb-4">Curriculum Vitae</legend>
+               </fieldset>
+               <div>
+                   <label>Upload CV: </label>
+                   <input type="file" accept=".pdf"/>
+               </div>
+               <div  id="pdfContainer">
+                   <embed src="{% static 'cv-1.pdf' %}" type="application/pdf">
+               </div>
+           </form>
+        </div>
+     </div>
+</section>
+
 
 {% endblock %}
