@@ -35,14 +35,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',  # new
-
-    'allauth',  # new
-    'allauth.account',  # new
-    'allauth.socialaccount',  # new
-    'allauth.socialaccount.providers.google',  # new
+    #==================================================================
+    # https://wsvincent.com/django-allauth-tutorial-custom-user-model/
+    # =================================================================
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    # ===================================================================
     'crispy_forms',
-    'cv',
+
+    'education',
     'pages',
     'users',
 ]
