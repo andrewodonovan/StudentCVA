@@ -58,6 +58,7 @@ class Education(models.Model):
     EducationStartDate = models.DateField(verbose_name=_('Education Start Date'), default=None)
     EducationEndDate = models.DateField(verbose_name=_('Education End Date'), default=None)
     EducationCaoCode = models.CharField(choices=CAO_CODE, max_length=100, default=None)
-    EducationDesc = models.CharField(verbose_name=_('Education Description'),max_length=250, default=None )
+    EducationDesc = models.CharField(verbose_name=_('Education Description'),max_length=250, default=None)
     def __str__(self):
-        return self.EducationName
+        return self.EducationInstitutionName
+
