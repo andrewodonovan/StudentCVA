@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'crispy_forms',
 
     'education',
+    'references',
+    'workexperience',
+    'skills',
     'pages',
     'users',
 ]
