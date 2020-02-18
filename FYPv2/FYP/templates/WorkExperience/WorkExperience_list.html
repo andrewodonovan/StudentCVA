@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{%block title %}Work Experience List{% endblock %}
+{% block content %}
+    <div class="CvContent">
+    <h1 class="text-center">Work Experience</h1>
+        <table class="CvTable">
+            <thead>
+                <tr>
+                    <th>Employer Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Description</th>
+                    <th colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for work in object_list %}
+                <tr>
+                    <td>{{ work.EmployerName }}</td>
+                    <td>{{ work.EmployerStartDate }}</td>
+                    <td>{{ work.EmployerEndDate }}</td>
+                    <td>{{ work.EmployerDesc }}</td>
+
+                    <td><a href="{% url "Education_view" work.id %}">View</a></td>
+
+                    <td><a href="{% url "Education_edit" work.id %}">Edit</a></td>
+                    <td><a href="{% url "Education_delete" work.id %}">Delete</a></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

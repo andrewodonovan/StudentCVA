@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{%block title %}CV Detail{% endblock %}
+{% block content %}
+
+<h1>CV Details</h1>
+<h2>Cv Name: {{object.CvName}}</h2>
+Cv User: {{ object.CvUser }}
+Cv Education: {{ object.CvEducation }}
+Cv Skills: {{ object.CvSkills }}
+Cv Work Experience: {{ object.CvWorkExperience }}
+
+{% endblock %}
