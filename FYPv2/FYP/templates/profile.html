@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
+{%block title %}Profile{% endblock %}
 {% block content %}
 <!-- Page Header, Full sized Image -->
 <header class="my-auto mx-auto d-flex" id="profilePageHeader">
@@ -28,7 +29,7 @@
                <fieldset class="form-group">
                    <legend class="border-bottom mb-4">Profile Info</legend>
 
-                    {{ u_form |crispy }}
+                    {{ u_form | crispy }}
                </fieldset>
                <div class="form-group">
                    <button class="btn btn-light" type="submit">Update</button>

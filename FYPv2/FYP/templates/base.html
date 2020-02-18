@@ -48,10 +48,17 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'cv' %}">
-                        Create CV
+                    <a class="nav-link" href="{% url 'Education_list' %}">
+                        Education
                     </a>
                 </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'Skills_list' %}">
+                        Skills
+                    </a>
+                </li>
+
                 {% else %}
                 {% endif %}
 

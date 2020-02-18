@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{%block title %}Education Detail{% endblock %}
+{% block content %}
+
+<h1>Education Details</h1>
+<h2>Institution Name: {{object.EducationInstitutionName}}</h2>
+Music Type: {{ object.EducationLevel }}
+Start Date: {{ object.EducationStartDate }}
+End Date: {{ object.EducationEndDate }}
+CAO Code: {{ object.EducationCaoCode }}
+Description: {{ object.EducationDesc }}
+
+{% endblock %}

@@ -27,6 +27,10 @@
 
 }
 
+html, body{
+	min-height: 100vh;
+}
+
 #landingPageHeader h1{
 	text-shadow: 2px 2px #000;
 	color: #FFF;
@@ -166,6 +170,30 @@
 .account-form input[type=text], .account-form input[type=password]{
 	border-radius: 0.25rem;
 	width: 15vw;
+}
+
+.CvTable{
+	background: #FFF;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+
+	margin: auto;
+	margin-bottom: ;
+}
+
+.CvTable td{
+	background: #DDD;
+
+}
+
+.CvTable td, th{
+	border-style: solid;
+	border-color: rgba(0, 0, 0, 0.5);
+	padding: 0.5rem;
+	border-width: 0.01rem;
+}
+
+.CvContent{
+	margin: auto;
 }
 /*
 =====================================================

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{%block title %}Education List{% endblock %}
+{% block content %}
+    <div class="CvContent">
+    <h1 class="text-center">Education</h1>
+        <table class="CvTable">
+            <thead>
+                <tr>
+                    <th>Institution Name</th>
+                    <th>Education Level</th>
+                    <th>Education Start Date</th>
+                    <th>Education End Date</th>
+                    <th>Education CAO Code</th>
+                    <th>Education Description</th>
+                    <th colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for Education in object_list %}
+                <tr>
+                    <td>{{ Education.EducationInstitutionName }}</td>
+                     <td>{{ Education.EducationLevel }}</td>
+                     <td>{{ Education.EducationStartDate }}</td>
+                     <td>{{ Education.EducationEndDate }}</td>
+                     <td>{{ Education.EducationCaoCode }}</td>
+                     <td>{{ Education.EducationDesc }}</td>
+
+                    <td><a href="{% url "Education_view" Education.id %}">View</a></td>
+
+                    <td><a href="{% url "Education_edit" Education.id %}">Edit</a></td>
+                    <td><a href="{% url "Education_delete" Education.id %}">Delete</a></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
