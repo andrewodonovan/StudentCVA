@@ -1,7 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .models import Education
+import FYP
+from pages.models import Education
 
 
 class EducationList(ListView):

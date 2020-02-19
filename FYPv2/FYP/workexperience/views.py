@@ -1,7 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .models import WorkExperience
+import FYP
+from pages.models import WorkExperience
 
 
 class WorkExperienceList(ListView):

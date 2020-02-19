@@ -1,13 +1,14 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-
-from .models import CustomUser
-
+import FYP
+from pages.models import CustomUser
 
 class SignupForm(forms.Form):
     first_name = forms.CharField(max_length=30, label='First Name')
     last_name = forms.CharField(max_length=150, label='Last Name')
-    DOB = forms.DateField(label='Date Of Birth')
+    DOB = forms.DateField(label='Date Of Birth', widget=forms.TextInput(attrs={
+        'class':'datepicker'
+    }))
     PhoneNumber = forms.CharField(max_length=15, label='Phone Number')
     Address = forms.CharField(max_length=150, label='Address ')
 

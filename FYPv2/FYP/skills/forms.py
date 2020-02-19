@@ -1,5 +1,6 @@
 from django import forms
-from .models import Skills
+import FYP
+from pages.models import Skills
 
 
 class SkillsForm(forms.ModelForm):

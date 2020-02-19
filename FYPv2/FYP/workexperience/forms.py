@@ -1,5 +1,6 @@
 from django import forms
-from .models import WorkExperience
+import FYP
+from pages.models import WorkExperience
 
 
 class WorkExperienceForm(forms.ModelForm):

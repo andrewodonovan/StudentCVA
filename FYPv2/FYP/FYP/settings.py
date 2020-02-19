@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'pages.apps.PagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,11 +52,10 @@ INSTALLED_APPS = [
     'references',
     'workexperience',
     'skills',
-    'pages',
     'users',
 ]
 DEFAULT_FROM_EMAIL = 'andrewodonovanfyp@gmail.com'
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'pages.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
