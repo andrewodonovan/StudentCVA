@@ -2,13 +2,35 @@
 
 {%block title %}Education Detail{% endblock %}
 {% block content %}
-
-<h1>Education Details</h1>
-<h2>Institution Name: {{object.EducationInstitutionName}}</h2>
-Education Level: {{ object.EducationLevel }}
-Start Date: {{ object.EducationStartDate }}
-End Date: {{ object.EducationEndDate }}
-CAO Code: {{ object.EducationCaoCode }}
-Description: {{ object.EducationDesc }}
+<div class="CvContent">
+    <h1 class="text-center cv-h1">Education Details</h1>
+    <hr />
+    <div class="CvTable">
+        <table>
+            <h2 class="text-center">{{object.EducationInstitutionName}}</h2>
+            <tr>
+                <td> Education Level:</td>
+                <td>{{ object.EducationLevel }}</td>
+            </tr>
+            <tr>
+                <td>Start Date:</td>
+                <td>{{ object.EducationStartDate }}</td>
+            </tr>
+             <tr>
+                <td>End Date:</td>
+                <td>{{ object.EducationEndDate }}</td>
+            </tr>
+             <tr>
+                <td>CAO Code:</td>
+                <td>{{ object.EducationCaoCode }}</td>
+            </tr>
+             <tr>
+                <td>Description:</td>
+                <td>{{ object.EducationDesc }}</td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+</div>
 
 {% endblock %}

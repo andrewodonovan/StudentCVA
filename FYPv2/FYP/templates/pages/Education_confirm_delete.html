@@ -2,11 +2,15 @@
 
 {%block title %}Education Confirm Delete{% endblock %}
 {% block content %}
+<div class="CvContent">
+    <h1 class="text-center cv-h1">Education Delete</h1>
+    <hr />
+    <div class="CvTable">
+        <form method="post">{% csrf_token %}
+            Are you sure you want to delete "{{ object }}" ?
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</div>
 
-    <h1>Education Delete</h1>
-    <form method="post">{% csrf_token %}
-        Are you sure you want to delete "{{ object }}" ?
-        <input type="submit" value="Submit" />
-    </form>
-
-{% end block%}
+{% endblock %}

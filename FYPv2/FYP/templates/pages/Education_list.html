@@ -2,39 +2,54 @@
 
 {%block title %}Education List{% endblock %}
 {% block content %}
+
     <div class="CvContent">
-    <h1 class="text-center">Education</h1>
-        <button><a href="{% url 'Education_new' %}">New</a></button>
-        <table class="CvTable">
-            <thead>
-                <tr>
-                    <th>Institution Name</th>
-                    <th>Education Level</th>
-                    <th>Education Start Date</th>
-                    <th>Education End Date</th>
-                    <th>Education CAO Code</th>
-                    <th>Education Description</th>
-                    <th colspan="3">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for Education in object_list %}
-                <tr>
-                    <td>{{ Education.EducationInstitutionName }}</td>
-                     <td>{{ Education.EducationLevel }}</td>
-                     <td>{{ Education.EducationStartDate }}</td>
-                     <td>{{ Education.EducationEndDate }}</td>
-                     <td>{{ Education.EducationCaoCode }}</td>
-                     <td>{{ Education.EducationDesc }}</td>
+    <h1 class="text-center cv-h1">Education</h1>
+        <hr />
 
-                    <td><a href="{% url "Education_view" Education.id %}">View</a></td>
+        {% for Education in object_list %}
+        <div class="CvTable">
 
-                    <td><a href="{% url "Education_edit" Education.id %}">Edit</a></td>
-                    <td><a href="{% url "Education_delete" Education.id %}">Delete</a></td>
+            <h2 class="text-center">{{ Education.EducationInstitutionName }}</h2>
+            <hr />
+            <table>
+                    <tr>
+                        <th>Education Level</th>
+                        <td>{{ Education.EducationLevel }}</td>
+                    </tr>
+                    <tr>
+                        <th>Education Start Date</th>
+                        <td>{{ Education.EducationStartDate }}</td>
+                    </tr>
+                    <tr>
+                        <th>Education End Date</th>
+                        <td>{{ Education.EducationEndDate }}</td>
+                    </tr>
+                    <tr>
+                        <th>Education CAO Code</th>
+                        <td>{{ Education.EducationCaoCode }}</td>
+                    </tr>
+                    <tr>
+                        <th>Education Description</th>
+                        <td>{{ Education.EducationDesc }}</td>
+                    </tr>
+                    <tr>
 
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                        <td colspan="2">
+                            <div class="form-button-container">
+                                <a class="form-button btn" id="view" href="{% url "Education_view" Education.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                <a class="form-button btn" id="edit" href="{% url "Education_edit" Education.id %}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                <a class="form-button btn" id="delete" href="{% url "Education_delete" Education.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+
+            </table>
+        </div>
+        <br />
+        {% endfor %}
+
+        <div class="text-center"><a class="add-new btn" id="add-new" href="{% url 'Education_new' %}">New +</a></div>
+        <br />
     </div>
 {% endblock %}
