@@ -47,28 +47,18 @@
                     </a>
                 </li>
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'Cv_list' %}">
-                        CV
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         CV
                     </a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'Education_list' %}">
-                        Education
-                    </a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'Skills_list' %}">
-                        Skills
-                    </a>
-                </li>
-
-                <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'WorkExperience_list' %}">
-                        Work Experience
-                    </a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'Cv_list' %}">Complete CVs</a>
+                       <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'Education_list' %}">Education</a>
+                        <a class="dropdown-item"  href="{% url 'Skills_list' %}">Skills</a>
+                        <a class="dropdown-item"   href="{% url 'WorkExperience_list' %}">Work Experience</a>
+                    </div>
                 </li>
 
                 {% else %}
@@ -82,13 +72,13 @@
                          {{  user.first_name }} &emsp; <i class="fas fa-user"></i>
                     </a>
                     <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item text-white" href="{% url 'profile' %}">Profile</a>
+                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
                         {% if user.is_staff %}
-                        <a class="dropdown-item text-white" href="{% url 'admin:index' %}">Admin</a>
+                        <a class="dropdown-item" href="{% url 'admin:index' %}">Admin</a>
                         <div class="dropdown-divider"></div>
                         {% else %}
                         {% endif %}
-                        <a class="dropdown-item text-white" href="{% url 'account_logout' %}">Log Out</a>
+                        <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
                     </div>
                 </li>
                 {% else %}

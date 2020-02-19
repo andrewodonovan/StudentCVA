@@ -195,6 +195,7 @@ html, body{
 	margin: auto;
 	width: 30vw;
 }
+.dropdown-item{color: #FFF;}
 
 .CvTable table td{
 	padding: 0.25rem;
