@@ -202,10 +202,13 @@ html, body{
 }
 footer{height: 70px}
 
+.cv-container{background: #000;}
+
 .CvContent{
 	margin: auto;
 	background: url(../../../bg.jpg) center center no-repeat;
 	min-height: calc(100vh - 126px);
+;
 }
 
 .form-button-container{
@@ -244,6 +247,7 @@ footer{height: 70px}
 	border-radius: 1rem;
 	width: 6rem;
 	background: green;
+
 }
 
 .add-new .btn a{
@@ -272,6 +276,18 @@ background: red;
 
 #add-new{
 	background: green;
+	border: solid rgba(0,0,0, 0.8) 0.1rem;
+}
+
+.no-record-text{
+	background: linear-gradient(180deg, #777, #999, #CCC, #DDD, #FFF, #DDD, #CCC, #999, #777);
+	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.8);
+	width: 20vw;
+	border: solid thin black;
+	border-radius: 1rem;
+	padding: 0.25rem;
+	margin: auto;
+	color: #000;
 }
 
 /*

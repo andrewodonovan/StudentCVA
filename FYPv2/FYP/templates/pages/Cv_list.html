@@ -3,36 +3,48 @@
 {%block title %}Education List{% endblock %}
 {% block content %}
     <div class="CvContent">
-    <h1 class="text-center">CV</h1>
-        <button><a href="{% url 'Cv_new' %}">New</a></button>
-        <table class="CvTable">
-            <thead>
+    <h1 class="text-center cv-h1">Completed CVs</h1>
+        <hr />
+
+        {% for Cv in object_list %}
+
+        <div class="CvTable">
+            <h2 class="text-center font-italic">{{ Cv.CvName }}</h2>
+            <hr />
+            <table>
                 <tr>
-                    <th>CV Name</th>
                     <th>CV User</th>
-                    <th>Cv Education</th>
-                    <th>Cv Skills</th>
-                    <th>CvWorkExperience</th>
-                    <th colspan="3">Actions</th>
+                    <td>{{ Education.CvUser }}</td>
                 </tr>
-            </thead>
-            <tbody>
-            {% for Education in object_list %}
                 <tr>
-                    <td>{{ Education.CvName }}</td>
-                     <td>{{ Education.CvUser }}</td>
-                     <td>{{ Education.CvEducation }}</td>
-                     <td>{{ Education.CvSkills }}</td>
-                     <td>{{ Education.CvWorkExperience }}</td>
-
-                    <td><a href="{% url "Cv_view" Cv.id %}">View</a></td>
-
-                    <td><a href="{% url "Cv_edit" Cv.id %}">Edit</a></td>
-                    <td><a href="{% url "Cv_delete" Cv.id %}">Delete</a></td>
-
+                    <th>Cv Education</th>
+                    <td>{{ Education.CvEducation }}</td>
                 </tr>
+                <tr>
+                    <th>Cv Skills</th>
+                    <td>{{ Education.CvSkills }}</td>
+                </tr>
+                <tr>
+                     <th>Cv Work Experience</th>
+                    <td>{{ Education.CvWorkExperience }}</td>
+                </tr>
+                <tr>
+                     <td colspan="2">
+                         <div class="form-button-container">
+                            <a class="form-button btn" id="view" href="{% url "Cv_view" Cv.id %}">View</a>
+                            <a class="form-button btn" id="edit" href="{% url "Cv_edit" Cv.id %}">Edit</a>
+                            <a class="form-button btn" id="delete" href="{% url "Cv_delete" Cv.id %}">Delete</a>
+                         </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+            <br />
             {% endfor %}
-            </tbody>
-        </table>
+            <div class="no-record-text alert-info">
+                <h5 class="text-center">Please add a record</h5>
+            </div>
+            <br />
+            <div class="text-center"><a class="add-new btn" id="add-new" href="{% url 'Cv_new' %}">New +</a></div>
     </div>
 {% endblock %}

@@ -18,7 +18,7 @@
 
 
     <!-- FontAwesome -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/8e4fedabed.js" crossorigin="anonymous"></script>
 
 </head>
@@ -107,5 +107,16 @@
     <script src="{% static 'vendor/jquery/jquery.slim.min.js' %}"></script>
     <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </section>
+
+<script>
+    $(document).ready(function(){
+
+  // jQuery methods go here.
+        if ( $( ".CvTable" ).length ) {
+            $( ".no-record-text" ).hide();
+        }
+
+});
+</script>
 </body>
 </html>

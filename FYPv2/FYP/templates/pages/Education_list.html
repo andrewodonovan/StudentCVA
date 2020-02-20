@@ -2,12 +2,13 @@
 
 {%block title %}Education List{% endblock %}
 {% block content %}
-
+<div class="cv-container">
     <div class="CvContent">
     <h1 class="text-center cv-h1">Education</h1>
         <hr />
 
         {% for Education in object_list %}
+
         <div class="CvTable">
 
             <h2 class="text-center font-italic">{{ Education.EducationInstitutionName }}</h2>
@@ -48,8 +49,11 @@
         </div>
         <br />
         {% endfor %}
-
+        <div class="no-record-text alert-info">
+            <h5 class="text-center">Please add a record</h5>
+        </div>
+        <br />
         <div class="text-center"><a class="add-new btn" id="add-new" href="{% url 'Education_new' %}">New +</a></div>
         <br />
-    </div>
+</div>
 {% endblock %}
