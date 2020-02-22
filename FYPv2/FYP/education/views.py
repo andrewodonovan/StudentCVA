@@ -15,10 +15,8 @@ class EducationList(LoginRequiredMixin, ListView):
         user_ids = CustomUser.objects.filter(username=self.request.user).values_list('id', flat=True)
         if user_ids:
             for uid in user_ids:
-                print("User ID Found")
                 return Education.objects.filter(user__id=uid)
         else:
-            print("No users")
             return Education.objects.all()
 
         # for uname in user_ids:
@@ -36,19 +34,19 @@ class EducationView(DetailView):
 
 class EducationCreate(CreateView):
     model = Education
-    fields = ['user', 'EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate',
+    fields = ['EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate',
               'EducationCaoCode', 'EducationDesc']
     success_url = reverse_lazy('Education_list')
 
     def form_valid(self, form):
-        user_id = self.request.user.id
+        form.instance.user = self.request.user
         return super(EducationCreate, self).form_valid(form)
 
 
 class EducationUpdate(UpdateView):
     model = Education
 
-    fields = ['user', 'EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate',
+    fields = ['EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate',
               'EducationCaoCode', 'EducationDesc']
     success_url = reverse_lazy('Education_list')
 
