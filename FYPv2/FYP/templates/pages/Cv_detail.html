@@ -2,12 +2,37 @@
 
 {%block title %}CV Detail{% endblock %}
 {% block content %}
-
-<h1>CV Details</h1>
-<h2>Cv Name: {{object.CvName}}</h2>
-Cv User: {{ object.CvUser }}
-Cv Education: {{ object.CvEducation }}
-Cv Skills: {{ object.CvSkills }}
-Cv Work Experience: {{ object.CvWorkExperience }}
-
+<div class="CvContent">
+    <h1 class="text-center cv-h1">CV Details</h1>
+    <hr />
+    <div class="CvTable">
+        <table>
+            <h2 class="text-center font-italic">{{object.CvName}}</h2>
+            <tr>
+                <th>Cv User:</th>
+                <td>{{ object.CvUser }}</td>
+            </tr>
+            <tr>
+                <th>Cv Education:</th>
+                <td>{{ object.CvEducation }}</td>
+            </tr>
+            <tr>
+                <th>Cv Skills:</th>
+                <td>{{ object.CvSkills }}</td>
+            </tr>
+            <tr>
+                <th>Cv Work Experience:</th>
+                <td>{{ object.CvWorkExperience }}</td>
+            </tr>
+            <tr>
+               <td colspan="2">
+                        <div class="form-button-container">
+                            <a class="form-button btn" id="view" href="{% url 'Skills_list' %}">Back</a>
+                        </div>
+               </td>
+            </tr>
+        </table>
+    </div>
+</div>
+s
 {% endblock %}

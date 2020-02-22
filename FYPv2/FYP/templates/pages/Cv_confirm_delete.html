@@ -2,11 +2,18 @@
 
 {%block title %}CV Confirm Delete{% endblock %}
 {% block content %}
-
-    <h1>Education Delete</h1>
-    <form method="post">{% csrf_token %}
-        Are you sure you want to delete "{{ object }}" ?
-        <input type="submit" value="Submit" />
-    </form>
+<div class="CvContent">
+    <h1 class="text-center cv-h1">Delete CV</h1>
+    <hr />
+    <div class="CvTable">
+        <form method="post">{% csrf_token %}
+            Are you sure you want to delete "{{ object }}" ?
+            <input type="submit" value="Submit" />
+        </form>
+        <div class="form-button-container">
+            <a class="form-button btn" id="view" href="{% url 'Cv_list' %}">Back</a>
+        </div>
+    </div>
+</div>
 
 {% end block%}

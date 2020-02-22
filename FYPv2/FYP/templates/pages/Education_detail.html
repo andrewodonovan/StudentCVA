@@ -28,9 +28,18 @@
                 <td>Description:</td>
                 <td>{{ object.EducationDesc }}</td>
             </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="form-button-container">
+                        <a class="form-button btn" id="view" href="{% url 'Education_list' %}">Back</a>
+                    </div>
+                </td>
+            </tr>
         </table>
+
     </div>
     <br/>
+
 </div>
 
 {% endblock %}

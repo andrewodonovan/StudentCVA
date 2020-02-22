@@ -82,20 +82,20 @@ class Education(models.Model):
 
 
 class Skills(models.Model):
-    SkillsUser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     SkillsName = models.CharField(verbose_name=_('Skill Name'), max_length=100, default=None)
     SkillsDesc = models.CharField(verbose_name=_('Skill Description'), max_length=250, default=None)
 
     def __str__(self):
-        return self.SkillName
+        return self.SkillsName
 
     def get_absolute_url(self):
         return reverse('Skills_edit', kwargs={'pk': self.pk})
 
 
 class WorkExperience(models.Model):
-    EmployerUser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    Employer = models.CharField(verbose_name=_('Employer'), max_length=100, default=None)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    EmployerName = models.CharField(verbose_name=_('Employer'), max_length=100, default=None)
     EmployerStartDate = models.DateField(verbose_name=_('Employer Start Date'), default=None)
     EmployerEndDate = models.DateField(verbose_name=_('Employer End Date'), default=None)
     EmployerDesc = models.CharField(verbose_name=_('Employer Description'), max_length=250, default=None)
@@ -106,7 +106,7 @@ class WorkExperience(models.Model):
 
 
 class Cv(models.Model):
-    User = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     CvName = models.CharField(verbose_name=_('CvName'), max_length=100, default=None)
     CvEducation = models.ForeignKey(Education, on_delete=models.CASCADE)
     CvSkills = models.ForeignKey(Skills, on_delete=models.CASCADE)

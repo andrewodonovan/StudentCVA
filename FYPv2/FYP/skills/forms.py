@@ -12,7 +12,6 @@ class SkillsForm(forms.ModelForm):
 
     def save(self, commit=True):
         skill = super(SkillsForm, self).save(commit=False)
-
         skill.SkillsName = self.cleaned_data['SkillsName']
         skill.SkillsDesc = self.cleaned_data['SkillsDesc']
         skill.save()

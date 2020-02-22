@@ -2,10 +2,25 @@
 
 {%block title %}Skills Delete{% endblock %}
 {% block content %}
-
-<h1>Skills Details</h1>
-<h2>Skills Name: {{object.SkillsName}}</h2>
-Skills Description: {{ object.SkillsDesc }}
-
+<div class="CvContent">
+    <h1 class="text-center cv-h1">Skill Details</h1>
+    <hr />
+    <div class="CvTable">
+        <table>
+            <h2 class="text-center font-italic">{{object.SkillsName}}</h2>
+            <tr>
+                <th>Skills Description:</th>
+                <td>{{ object.SkillsDesc }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="form-button-container">
+                        <a class="form-button btn" id="view" href="{% url 'Skills_list' %}">Back</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 {% endblock %}

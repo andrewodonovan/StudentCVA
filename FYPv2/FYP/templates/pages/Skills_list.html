@@ -17,10 +17,12 @@
                     <td>{{ Skills.SkillsDesc }}</td>
                  </tr>
                  <tr>
-                    <td>
-                        <a href="{% url "Skills_view" Skills.id %}">View</a>
-                        <a href="{% url "Skills_edit" Skills.id %}">Edit</a>
-                        <a href="{% url "Skills_delete" Skills.id %}">Delete</a>
+                     <td colspan="2">
+                        <div class="form-button-container">
+                            <a class="form-button btn" id="view" href="{% url "Skills_view" Skills.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            <a class="form-button btn" id="edit" href="{% url "Skills_edit" Skills.id %}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="form-button btn" id="delete" href="{% url "Skills_delete" Skills.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        </div>
                     </td>
                  </tr>
             </table>

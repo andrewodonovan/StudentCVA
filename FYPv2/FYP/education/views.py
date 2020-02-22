@@ -19,13 +19,6 @@ class EducationList(LoginRequiredMixin, ListView):
         else:
             return Education.objects.all()
 
-        # for uname in user_ids:
-        #     print(uname)
-        #     print(self.request.user)
-        #     return Education.objects.filter(id=uname)
-
-
-
 
 class EducationView(DetailView):
     model = Education

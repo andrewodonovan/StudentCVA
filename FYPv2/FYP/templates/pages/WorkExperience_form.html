@@ -3,8 +3,16 @@
 
 {%block title %}Work Experience Form{% endblock %}
 {% block content %}
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit" />
-</form>
+<div class="CvContent">
+    <h1 class="text-center cv-h1">Work Experience Record</h1>
+    <hr />
+    <div class="CvTable">
+        <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+         <input type="submit" class="btn btn-primary" value="Submit" />
+    </form>
+         </div>
+    <br />
+</div>
+
 {% endblock %}

@@ -2,10 +2,28 @@
 
 {%block title %}Work Experience Detail{% endblock %}
 {% block content %}
+<div class="CvContent">
+    <h1 class="text-center cv-h1">Education Details</h1>
+    <hr />
+    <div class="CvTable">
+        <table>
+            <h2 class="text-center font-italic">{{object.EmployerName}}</h2>
+             <tr>
+                 <th>Work Experience Description:</th>
+                 <td> {{ object.EmployerDesc }}</td>
+             </tr>
+             <tr>
+                <td colspan="2">
+                    <div class="form-button-container">
+                        <a class="form-button btn" id="view" href="{% url 'WorkExperience_list' %}">Back</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 
-<h1>Work Experience Details</h1>
-<h2>Work Experience Name: {{object.EmployerName}}</h2>
-Work Experience Description: {{ object.EmployerDesc }}
+
 
 
 {% endblock %}

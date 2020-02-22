@@ -1,6 +1,6 @@
 from django import forms
 import FYP
-from pages.models import Cv
+from pages.models import Cv, Education, CustomUser, Skills, WorkExperience
 
 
 class CvForm(forms.ModelForm):
@@ -8,15 +8,27 @@ class CvForm(forms.ModelForm):
 
     class Meta:
         model = Cv
-        fields = ('CvName', 'CvUser', 'CvEducation', 'CvSkills', 'CvWorkExperience')
+        fields = ('user','CvName', 'CvEducation', 'CvSkills', 'CvWorkExperience')
 
-    def save(self, commit=True):
-        cv = super(CvForm, self).save(commit=False)
-        cv.CvName = self.cleaned_data['CvName']
-        cv.CvUser = self.cleaned_data['CvUser']
-        cv.CvEducation = self.cleaned_data['CvEducation']
-        cv.CvSkills = self.cleaned_data['CvSkills']
-        cv.CvWorkExperience = self.cleaned_data['CvWorkExperience']
+        def __init__(self, *args, **kwargs):
+            self._user = kwargs.pop('user')
+            super(CvForm, self).__init__(*args, **kwargs)
 
-        cv.save()
-        return cv
+        def save(self, commit=True):
+
+            user_ids = CustomUser.objects.filter(username=self.request.user).values_list('id', flat=True)
+
+
+
+            cv = super(CvForm, self).save(commit=False)
+            cv.user = self.request.user.id
+            cv.CvName = self.cleaned_data['CvName']
+            if user_ids:
+                for uid in user_ids:
+                    cv.CvEducation = Education.objects.filter(user__id=uid)
+                    cv.CvSkills = Skills.objects.filter(user__id=uid)
+                    cv.CvWorkExperience = WorkExperience.objects.filter(user__id=uid)
+            if commit:
+                cv.save()
+                self.save_m2m()
+            return cv

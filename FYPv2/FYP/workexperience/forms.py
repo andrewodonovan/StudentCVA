@@ -12,7 +12,7 @@ class WorkExperienceForm(forms.ModelForm):
 
     def save(self, commit=True):
         work = super(WorkExperienceForm, self).save(commit=False)
-        work.WorkExperienceName = self.cleaned_data['EmployerName']
+        work.EmployerName = self.cleaned_data['EmployerName']
         work.WorkExperienceStartDate = self.cleaned_data['EmployerStartDate']
         work.WorkExperienceEndDate = self.cleaned_data['EmployerEndDate']
         work.WorkExperienceDesc = self.cleaned_data['EmployerDesc']
