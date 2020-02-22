@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm
 from django.utils.translation import ugettext as _
 from django import forms
 import FYP
@@ -57,21 +58,28 @@ CAO_CODE = (
 )
 
 
-class EducationForm(UserCreationForm):
+class EducationForm(ModelForm):
     email = forms.EmailField(required=True)
 
     class Meta:
         model = Education
-        fields = ("EducationInstitutionName", "EducationLevel", "EducationStartDate", "EducationEndDate", "EducationCaoCode", "EducationDesc")
 
-    def save(self, commit=True):
-        edu = super(EducationForm, self).save(commit=False)
-        edu.EducationInstitutionName = self.cleaned_data['EducationInstitutionName']
-        edu.EducationLevel = self.cleaned_data['EducationLevel']
-        edu.EducationStartDate = self.cleaned_data['EducationStartDate']
-        edu.EducationEndDate = self.cleaned_data['EducationEndDate']
-        edu.EducationCaoCode = self.cleaned_data['EducationCaoCode']
-        edu.EducationDesc = self.cleaned_data['EducationDesc']
-        if commit:
-            edu.save()
-        return edu
+        fields = ("user", "EducationInstitutionName", "EducationLevel", "EducationStartDate", "EducationEndDate", "EducationCaoCode", "EducationDesc")
+
+        def __init__(self, *args, **kwargs):
+            self._user = kwargs.pop('user')
+            super(EducationForm, self).__init__(*args, **kwargs)
+
+        def save(self, commit=False):
+            edu = super(EducationForm, self).save(commit=False)
+            edu.user = self.request.user.id
+            edu.EducationInstitutionName = self.cleaned_data['EducationInstitutionName']
+            edu.EducationLevel = self.cleaned_data['EducationLevel']
+            edu.EducationStartDate = self.cleaned_data['EducationStartDate']
+            edu.EducationEndDate = self.cleaned_data['EducationEndDate']
+            edu.EducationCaoCode = self.cleaned_data['EducationCaoCode']
+            edu.EducationDesc = self.cleaned_data['EducationDesc']
+            if commit:
+                edu.save()
+                self.save_m2m()
+            return edu

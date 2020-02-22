@@ -3,6 +3,10 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext as _
 
+import FYP
+from FYP import settings
+
+
 EDUCATIONLEVEL = (
     ('Level 5', 'Leaving Cert.'),
     ('Level 6', 'Post-Leaving Cert. Course'),
@@ -55,17 +59,20 @@ CAO_CODE = (
 )
 
 class CustomUser(AbstractUser):
- pass
+    pass
+
 
 
 
 class Education(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     EducationInstitutionName = models.CharField(verbose_name=_('Institution Name'), max_length=100, default=None)
     EducationLevel = models.CharField(verbose_name=_('Education Level'), choices=EDUCATIONLEVEL, max_length=100, default=None)
     EducationStartDate = models.DateField(verbose_name=_('Education Start Date'), default=None)
     EducationEndDate = models.DateField(verbose_name=_('Education End Date'), default=None)
     EducationCaoCode = models.CharField(choices=CAO_CODE, max_length=100, default=None)
     EducationDesc = models.CharField(verbose_name=_('Education Description'), max_length=250, default=None)
+
 
     def __str__(self):
         return self.EducationInstitutionName
@@ -75,6 +82,7 @@ class Education(models.Model):
 
 
 class Skills(models.Model):
+    SkillsUser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     SkillsName = models.CharField(verbose_name=_('Skill Name'), max_length=100, default=None)
     SkillsDesc = models.CharField(verbose_name=_('Skill Description'), max_length=250, default=None)
 
@@ -86,6 +94,7 @@ class Skills(models.Model):
 
 
 class WorkExperience(models.Model):
+    EmployerUser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     Employer = models.CharField(verbose_name=_('Employer'), max_length=100, default=None)
     EmployerStartDate = models.DateField(verbose_name=_('Employer Start Date'), default=None)
     EmployerEndDate = models.DateField(verbose_name=_('Employer End Date'), default=None)
@@ -97,11 +106,13 @@ class WorkExperience(models.Model):
 
 
 class Cv(models.Model):
+    User = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     CvName = models.CharField(verbose_name=_('CvName'), max_length=100, default=None)
-    CvUser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     CvEducation = models.ForeignKey(Education, on_delete=models.CASCADE)
     CvSkills = models.ForeignKey(Skills, on_delete=models.CASCADE)
     CvWorkExperience = models.ForeignKey(WorkExperience, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.CvName
+
+

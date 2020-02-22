@@ -1,27 +1,55 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-import FYP
-from pages.models import Education
+from pages.models import Education, CustomUser
 
-
-class EducationList(ListView):
+class EducationList(LoginRequiredMixin, ListView):
     model = Education
+
+    def form_valid(self, form):
+        id = self.request.user.id
+        return super(EducationList, self).form_valid(form)
+
+    def get_queryset(self):
+        user_ids = CustomUser.objects.filter(username=self.request.user).values_list('id', flat=True)
+        if user_ids:
+            for uid in user_ids:
+                print("User ID Found")
+                return Education.objects.filter(user__id=uid)
+        else:
+            print("No users")
+            return Education.objects.all()
+
+        # for uname in user_ids:
+        #     print(uname)
+        #     print(self.request.user)
+        #     return Education.objects.filter(id=uname)
+
+
 
 
 class EducationView(DetailView):
     model = Education
 
 
+
 class EducationCreate(CreateView):
     model = Education
-    fields = ['EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate', 'EducationCaoCode', 'EducationDesc']
+    fields = ['user', 'EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate',
+              'EducationCaoCode', 'EducationDesc']
     success_url = reverse_lazy('Education_list')
+
+    def form_valid(self, form):
+        user_id = self.request.user.id
+        return super(EducationCreate, self).form_valid(form)
 
 
 class EducationUpdate(UpdateView):
     model = Education
-    fields = ['EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate', 'EducationCaoCode', 'EducationDesc']
+
+    fields = ['user', 'EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate',
+              'EducationCaoCode', 'EducationDesc']
     success_url = reverse_lazy('Education_list')
 
 

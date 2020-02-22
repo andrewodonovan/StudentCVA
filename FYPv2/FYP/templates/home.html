@@ -12,11 +12,17 @@
             {% if user.is_authenticated %}
             {% else %}
             <div id="landingPageHeaderButtons" class="d-flex col-12 mx-auto my-auto align-items-center text-center">
-                <button class="form-control btn-light"><a href="{% url 'account_signup' %}">Sign Up</a></button>
-                <button class="form-control btn-light"><a href="{% url 'account_login' %}">Log In</a></button>
+                <a class="form-control btn btn-light" id="landing-signup" href="{% url 'account_signup' %}">
+                    Sign Up
+                </a>
+                <a class="form-control btn btn-light" id="landing-login" href="{% url 'account_login' %}">
+                    Log In
+                </a>
                 {% load socialaccount %}
-                <button class="form-control btn-danger"><a href="{% provider_login_url 'google' %}"><i style="color: #fff;" class="fab fa-google"></i></a>
-                </button>
+                <a class="form-control btn btn-danger" id="landing-google" href="{% provider_login_url 'google' %}">
+                    <i style="color: #fff;" class="fab fa-google"></i>
+                </a>
+
             </div>
             {% endif %}
         </div>
