@@ -13,28 +13,24 @@
             <hr />
             <table>
                 <tr>
-                    <th>CV User</th>
-                    <td>{{ Education.CvUser }}</td>
-                </tr>
-                <tr>
                     <th>Cv Education</th>
-                    <td>{{ Education.CvEducation }}</td>
+                    <td>{{ Cv.CvEducation }}</td>
                 </tr>
                 <tr>
                     <th>Cv Skills</th>
-                    <td>{{ Education.CvSkills }}</td>
+                    <td>{{ Cv.CvSkills }}</td>
                 </tr>
                 <tr>
                      <th>Cv Work Experience</th>
-                    <td>{{ Education.CvWorkExperience }}</td>
+                    <td>{{ Cv.CvWorkExperience }}</td>
                 </tr>
                 <tr>
                      <td colspan="2">
-                         <div class="form-button-container">
-                            <a class="form-button btn" id="view" href="{% url "Cv_view" Cv.id %}">View</a>
-                            <a class="form-button btn" id="edit" href="{% url "Cv_edit" Cv.id %}">Edit</a>
-                            <a class="form-button btn" id="delete" href="{% url "Cv_delete" Cv.id %}">Delete</a>
-                         </div>
+                        <div class="form-button-container">
+                            <a class="form-button btn" id="view" href="{% url "Cv_view" Cv.id %}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            <a class="form-button btn" id="edit" href="{% url "Cv_edit" Cv.id %}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                            <a class="form-button btn" id="delete" href="{% url "Cv_delete" Cv.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -46,5 +42,6 @@
             </div>
             <br />
             <div class="text-center"><a class="add-new btn" id="add-new" href="{% url 'Cv_new' %}">New +</a></div>
+        <br />
     </div>
 {% endblock %}

@@ -7,6 +7,8 @@ from pages.models import Education
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from .widgets import MonthYearWidget
+
 EDUCATIONLEVEL = (
     ('Level 5', 'Leaving Cert.'),
     ('Level 6', 'Post-Leaving Cert. Course'),
@@ -58,8 +60,9 @@ CAO_CODE = (
 )
 
 
+
+
 class EducationForm(ModelForm):
-    email = forms.EmailField(required=True)
 
     class Meta:
         model = Education
@@ -81,5 +84,4 @@ class EducationForm(ModelForm):
             edu.EducationDesc = self.cleaned_data['EducationDesc']
             if commit:
                 edu.save()
-                self.save_m2m()
             return edu

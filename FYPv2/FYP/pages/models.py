@@ -1,8 +1,9 @@
+import datetime
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext as _
-
 import FYP
 from FYP import settings
 
@@ -65,7 +66,7 @@ class CustomUser(AbstractUser):
 
 
 class Education(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='EducationUser')
     EducationInstitutionName = models.CharField(verbose_name=_('Institution Name'), max_length=100, default=None)
     EducationLevel = models.CharField(verbose_name=_('Education Level'), choices=EDUCATIONLEVEL, max_length=100, default=None)
     EducationStartDate = models.DateField(verbose_name=_('Education Start Date'), default=None)
@@ -82,19 +83,20 @@ class Education(models.Model):
 
 
 class Skills(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='SkillsUser')
     SkillsName = models.CharField(verbose_name=_('Skill Name'), max_length=100, default=None)
     SkillsDesc = models.CharField(verbose_name=_('Skill Description'), max_length=250, default=None)
 
     def __str__(self):
         return self.SkillsName
 
-    def get_absolute_url(self):
-        return reverse('Skills_edit', kwargs={'pk': self.pk})
+
+def get_absolute_url(self):
+    return reverse('Skills_edit', kwargs={'pk': self.pk})
 
 
 class WorkExperience(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='WorkExperienceUser')
     EmployerName = models.CharField(verbose_name=_('Employer'), max_length=100, default=None)
     EmployerStartDate = models.DateField(verbose_name=_('Employer Start Date'), default=None)
     EmployerEndDate = models.DateField(verbose_name=_('Employer End Date'), default=None)
@@ -104,10 +106,12 @@ class WorkExperience(models.Model):
         return self.EmployerName
 
 
-
 class Cv(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     CvName = models.CharField(verbose_name=_('CvName'), max_length=100, default=None)
+    user = models.ForeignKey(
+        CustomUser,
+        on_delete=models.CASCADE,
+    )
     CvEducation = models.ForeignKey(Education, on_delete=models.CASCADE)
     CvSkills = models.ForeignKey(Skills, on_delete=models.CASCADE)
     CvWorkExperience = models.ForeignKey(WorkExperience, on_delete=models.CASCADE)
@@ -115,4 +119,6 @@ class Cv(models.Model):
     def __str__(self):
         return self.CvName
 
+    def get_absolute_url(self):
+        return reverse('Cv_edit', kwargs={'pk': self.pk})
 

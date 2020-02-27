@@ -27,10 +27,11 @@ class EducationView(DetailView):
 
 class EducationCreate(CreateView):
     model = Education
-    fields = ['EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate',
+    fields = ['user', 'EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate',
               'EducationCaoCode', 'EducationDesc']
     success_url = reverse_lazy('Education_list')
 
+    # Sets the user on form save
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(EducationCreate, self).form_valid(form)
@@ -39,7 +40,7 @@ class EducationCreate(CreateView):
 class EducationUpdate(UpdateView):
     model = Education
 
-    fields = ['EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate',
+    fields = ['user','EducationInstitutionName', 'EducationLevel', 'EducationStartDate', 'EducationEndDate',
               'EducationCaoCode', 'EducationDesc']
     success_url = reverse_lazy('Education_list')
 
