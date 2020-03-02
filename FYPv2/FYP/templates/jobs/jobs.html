@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{%block title %}Any Jobs Going{% endblock %}
+{% block content %}
+    <div class="CvContent">
+    <h1 class="text-center cv-h1">Jobs</h1>
+        <hr />
+
+
+    {% for jab in posting %}
+
+        <div class="CvTable">
+            <table>
+                <tr>
+                    <td><h2><a href="#" class="btn text-dark">{{ jab }}</a></h2></td>
+                </tr>
+            </table>
+
+        </div>
+          <br />
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

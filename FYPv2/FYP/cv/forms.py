@@ -19,21 +19,5 @@ class CvForm(forms.ModelForm):
         self.fields['CvEducation'].queryset = Education.objects.filter(user__id=user_id)
         self.fields['CvSkills'].queryset = Skills.objects.filter(user__id=user_id)
         self.fields['CvWorkExperience'].queryset = WorkExperience.objects.filter(user__id=user_id)
-        # form.instance.user = self.request.user
-
-
-
-
-    # def save(self, commit=False):
-    #     cv = super(CvForm, self).save(commit=False)
-    #     cv.user = self.request.user
-    #     cv.CvName = self.cleaned_data['CvName']
-    #     cv.CvEducation = self.cleaned_data['CvEducation']
-    #     cv.CvSkills = self.cleaned_data['CvSkills']
-    #     cv.CvWorkExperience = self.cleaned_data['CvWorkExperience']
-    #     if commit:
-    #         cv.save()
-    #     return cv
-
 
 

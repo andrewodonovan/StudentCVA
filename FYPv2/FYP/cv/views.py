@@ -3,6 +3,14 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+#================================================
+#               BACKEND IMPORTS
+#================================================
+import re
+import requests
+from bs4 import BeautifulSoup as bs
+import slate3k as slate
+#================================================
 
 import FYP
 from pages.models import Cv, CustomUser, Education, Skills, WorkExperience
