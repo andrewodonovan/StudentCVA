@@ -6,13 +6,13 @@
     <h1 class="text-center cv-h1">Jobs</h1>
         <hr />
 
-
-    {% for jab in posting %}
+<!-- https://stackoverflow.com/questions/32226716/multiple-for-loop-in-django-template -->
+        {% for jab, key in jobs %}
 
         <div class="CvTable">
             <table>
                 <tr>
-                    <td><h2><a href="#" class="btn text-dark">{{ jab }}</a></h2></td>
+                    <td><h3><a href="https://ie.indeed.com/viewjob?jk={{ key }}" class="btn text-dark">{{ jab }}</a></h3></td>
                 </tr>
             </table>
 

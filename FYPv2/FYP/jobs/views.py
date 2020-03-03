@@ -4,6 +4,12 @@ import re
 from bs4 import BeautifulSoup as bs
 import slate3k as slate
 
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+
+# import FYP
+# from pages.models import Job, CustomUser
+
 # Get top resumé words
 
 
@@ -12,20 +18,20 @@ import requests
 from django.shortcuts import render
 from requests import get
 
+def job_search(request):
+    pass
 
 def find_job(request):
-    #c = "https://ie.indeed.com/viewjob?jk=3f71b264fdd44b34&q=python+developer&l=cork&tk=1e2dov7fl9mh3800&from=web&advn=3190066218131062&adid=336474481&sjdu=EJysIw7ZxQWtrbe43k-UVdQpuy0HosYrBqVYOuAwS4in1r8WZcml6yF7Ks_t9GoNDBUta3C9agvu4QsQqSBVaJAvfJUiDn6mqiE9cqx1pZicQIVCHhYEeeT0YMgeMv08akp8iDu6JdC7-bhWEDpMJA&acatk=1e2dp27qj9hp3800&pub=4a1b367933fd867b19b072952f68dceb&vjs=3"
-    # TODO: Implement Linking
-    # https://ie.indeed.com/viewjob?jk=
-    # TODO: Show HTML links
-    job_role = input("Enter your desired role: ")
-    job_loc = input("Enter your desired location: ")
+    job_role = input("role: ")
+    job_loc = input("location: ")
+
 
     url = "https://ie.indeed.com/jobs?q=" + job_role + "&l=" + job_loc
     response = get(url)
     html_soup = bs(response.text, 'html.parser')
     role_search = html_soup.findAll("a", class_="jobtitle")
     company_search = html_soup.findAll("span", class_="company")
+    url_search = html_soup.findAll("div", class_="jobsearch-SerpJobCard")
 
     roles = []
     companies = []
@@ -47,15 +53,16 @@ def find_job(request):
         companies.append(str(c))
         number_of_companies += 1
 
-    for u in company_search:
+    for u in url_search:
         u = str(u)
         if u.find("jk=") != -1:
-            s_point = u.find("jk=")
+            pt = u.find("jk=")
+            s_point = pt + 4
             e_point = s_point + 16
             job_id = u[s_point:e_point]
             job_ids.append(job_id)
 
-
+    print(number_of_roles, number_of_companies)
 
     for i in range(1, number_of_roles):
         c_strip = companies[i].rstrip("\\n")
@@ -64,12 +71,29 @@ def find_job(request):
         job_posting.append(job_header.lstrip())
 
     posting = list(job_posting)
+    print("=============================================\n Jobs \n=============================================")
+    p_c = 0
+    for p in job_posting:
+        print(p)
+        p_c += 1
+    print("Posts ", p_c)
+
     jobkeys = list(job_ids)
 
-    context = {
-        'posting': posting,
-        'jobkeys': job_ids
+    k_c = 0
+    for k in job_ids:
+        print(k)
+        k_c += 1
+    print("Keys: ", k_c)
 
+    #===========================================================================================
+    #   Found Zipping Here:
+    #   https://stackoverflow.com/questions/32226716/multiple-for-loop-in-django-template
+    # ===========================================================================================
+    jobs = zip(posting, jobkeys)
+
+    context = {
+        'jobs': jobs
     }
 
     return render(request, 'jobs/jobs.html', context)
