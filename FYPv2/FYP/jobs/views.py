@@ -15,17 +15,35 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 # Load Job Description
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from requests import get
 
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+
+
+#===============================================================
+# https://docs.djangoproject.com/en/3.0/topics/forms/
+#===============================================================
+
+
+from .forms import JobForm
+
+
 def job_search(request):
-    pass
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = JobForm(request.POST)
+        if form.is_valid():
+            return redirect('display-jobs')
+    else:
+        form = JobForm()
+    return render(request, 'jobs/job-search.html', {'form': form})
 
-def find_job(request):
-    job_role = input("role: ")
-    job_loc = input("location: ")
-
-
+def display_jobs(request):
+    job_role = request.POST['job_role']
+    job_loc = request.POST['job_location']
     url = "https://ie.indeed.com/jobs?q=" + job_role + "&l=" + job_loc
     response = get(url)
     html_soup = bs(response.text, 'html.parser')
@@ -62,8 +80,6 @@ def find_job(request):
             job_id = u[s_point:e_point]
             job_ids.append(job_id)
 
-    print(number_of_roles, number_of_companies)
-
     for i in range(0, number_of_roles):
         c_strip = companies[i].rstrip("\\n")
         r_strip = roles[i].lstrip()
@@ -71,20 +87,15 @@ def find_job(request):
         job_posting.append(job_header.lstrip())
 
     posting = list(job_posting)
-    print("=============================================\n Jobs \n=============================================")
     p_c = 0
     for p in job_posting:
-        print(p)
         p_c += 1
-    print("Posts ", p_c)
 
     jobkeys = list(job_ids)
 
     k_c = 0
     for k in job_ids:
-        print(k)
         k_c += 1
-    print("Keys: ", k_c)
 
     #===========================================================================================
     #   Found Zipping Here:

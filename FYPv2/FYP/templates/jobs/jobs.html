@@ -2,24 +2,31 @@
 
 {%block title %}Any Jobs Going{% endblock %}
 {% block content %}
-    <div class="CvContent">
-    <h1 class="text-center cv-h1">Jobs</h1>
-        <hr />
+    <div class="cv-container">
+        <div class="CvContent">
+        <h1 class="text-center cv-h1">Jobs</h1>
+            <hr class="bg-white w-25"/>
 
-<!-- https://stackoverflow.com/questions/32226716/multiple-for-loop-in-django-template -->
-        {% for jab, key in jobs %}
+    <!-- https://stackoverflow.com/questions/32226716/multiple-for-loop-in-django-template -->
+            {% for jab, key in jobs %}
 
-        <div class="CvTable">
-            <table>
-                <tr>
-                    <td><h3><a href="https://ie.indeed.com/viewjob?jk={{ key }}" class="btn text-dark">{{ jab }}</a></h3></td>
-                </tr>
-            </table>
+            <div class="CvTable">
+                <table>
+                    <tr>
+                        <td><h3><a href="https://ie.indeed.com/viewjob?jk={{ key }}" class="btn text-dark">{{ jab }}</a></h3></td>
+                    </tr>
+                </table>
 
+            </div>
+           <br />
+            {% endfor %}
+            <div class="no-record-text alert-info">
+                <h5 class="text-center">No results found</h5>
+                <a href="{% url 'job-search' %}">Do you want to try different search terms?</a>
+            </div>
+            <br />
         </div>
-          <br />
-        {% endfor %}
-    </div>
 
+    </div>
 
 {% endblock %}

@@ -2,5 +2,21 @@
 
 {%block title %}Job Search Lak{% endblock %}
 {% block content %}
+<div class="cv-container">
+        <div class="CvContent">
+        <h1 class="text-center cv-h1">Jobs</h1>
+            <hr class="bg-white w-25"/>
 
+
+            <form method="POST" action="{% url 'display-jobs' %}">
+              {% csrf_token %}
+                {{ form }}
+                <input value="Search" class="btn btn-success" type="submit">
+            </form>
+
+
+
+
+        </div>
+</div>
 {% endblock %}
