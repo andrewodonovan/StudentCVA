@@ -64,7 +64,7 @@ def find_job(request):
 
     print(number_of_roles, number_of_companies)
 
-    for i in range(1, number_of_roles):
+    for i in range(0, number_of_roles):
         c_strip = companies[i].rstrip("\\n")
         r_strip = roles[i].lstrip()
         job_header = c_strip.rstrip() + " - " + r_strip.lstrip()
