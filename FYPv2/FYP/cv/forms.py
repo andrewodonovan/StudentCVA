@@ -21,3 +21,14 @@ class CvForm(forms.ModelForm):
         self.fields['CvWorkExperience'].queryset = WorkExperience.objects.filter(user__id=user_id)
 
 
+class CvUploadForm(forms.Form):
+    cv_file = forms.FileField( label='Select a PDF CV')
+    cv_name = forms.CharField(label='CV Name')
+
+    def clean(self):
+        cleaned_data = super(CvUploadForm, self).clean()
+
+        text = cleaned_data.get('cv_name')
+
+
+        return cleaned_data

@@ -1,6 +1,11 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from datetime import datetime
+
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.template import RequestContext
+from django.http import FileResponse, Http404
+from django.core.files.storage import FileSystemStorage
+from reportlab.pdfgen import canvas
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 #================================================
@@ -14,7 +19,7 @@ import slate3k as slate
 
 import FYP
 from pages.models import Cv, CustomUser, Education, Skills, WorkExperience
-from .forms import CvForm
+from .forms import CvForm, CvUploadForm
 
 
 class CvList(ListView):
@@ -66,3 +71,50 @@ class CvUpdate(UpdateView):
 class CvDelete(DeleteView):
     model = Cv
     success_url = reverse_lazy('Cv_list')
+
+#==================================================================================================
+# https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html
+#==================================================================================================
+
+
+def simple_upload(request):
+    form = CvUploadForm(request.POST, request.FILES)
+    if request.method == 'POST' and request.FILES['cv_file']:
+        cv_file = request.FILES['cv_file']
+        fs = FileSystemStorage()
+        cv_file_name = cv_file.name
+        print(cv_file_name)
+        filename = fs.save(cv_file_name, cv_file)
+        return pdf_view(request)
+
+    return render(request, 'pages/cvupload.html', {'form':form})
+
+
+def pdf_view(request):
+    cv_file = request.FILES['cv_file']
+
+    try:
+        if cv_file:
+            fs = FileSystemStorage()
+            file = fs.open(cv_file.name)
+            return FileResponse(file, content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404()
+
+
+# def create_pdf(request):
+#     # Create the HttpResponse object with the appropriate PDF headers.
+#     response = HttpResponse(content_type='application/pdf')
+#     response['Content-Disposition'] = 'attachment; filename="somefilename.pdf"'
+#
+#     # Create the PDF object, using the response object as its "file."
+#     p = canvas.Canvas(response)
+#
+#     # Draw things on the PDF. Here's where the PDF generation happens.
+#     # See the ReportLab documentation for the full list of functionality.
+#     p.drawString(100, 100, "Hello world.")
+#
+#     # Close the PDF object cleanly, and we're done.
+#     p.showPage()
+#     p.save()
+#     return response

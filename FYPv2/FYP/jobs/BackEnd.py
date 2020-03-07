@@ -13,7 +13,7 @@ from requests import get
 
 
 
-find_job(self=None):
+
 
 # TODO: Implement Linking
 # https://ie.indeed.com/viewjob?jk=
@@ -32,8 +32,8 @@ find_job(self=None):
 #
 # # Resume sec3 loaded
 #
-# with open('cv-1.pdf', 'rb') as f:
-#     doc = slate.PDF(f)
+with open('cv-1.pdf', 'rb') as f:
+    doc = slate.PDF(f)
 #
 #     # Make new array
 # doc_string = str(doc)
@@ -234,8 +234,3 @@ find_job(self=None):
 #                 print(kw, " ", "Match: ", cv_line)
 #                 matches.append(cv_line)
 #                 return matches
-#
-#
-#
-#
-#

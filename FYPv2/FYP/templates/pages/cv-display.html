@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+   <div class="cv-container">
+        <div class="CvContent">
+        <h1 class="text-center cv-h1">CV</h1>
+            <hr class="bg-white w-25"/>
+            <div class="CvTable">
+                <table>
+                    <tr>
+                        <td>{{ cv_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ cv_file }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+   </div>
+{% endblock %}

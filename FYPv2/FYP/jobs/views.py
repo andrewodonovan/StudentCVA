@@ -56,7 +56,7 @@ def display_jobs(request):
 
     number_of_roles = 0
     number_of_companies = 0
-
+    comps_for_logo = []
     job_ids = []
 
     for r in role_search:
@@ -70,6 +70,10 @@ def display_jobs(request):
         c = c.getText()
         companies.append(str(c))
         number_of_companies += 1
+
+    for c in companies:
+        c = c.rstrip("\\n")
+        comps_for_logo.append(c.rstrip())
 
     for u in url_search:
         u = str(u)
@@ -101,7 +105,7 @@ def display_jobs(request):
     #   Found Zipping Here:
     #   https://stackoverflow.com/questions/32226716/multiple-for-loop-in-django-template
     # ===========================================================================================
-    jobs = zip(posting, jobkeys)
+    jobs = zip(posting, jobkeys, comps_for_logo)
 
     context = {
         'jobs': jobs
@@ -109,4 +113,6 @@ def display_jobs(request):
 
     return render(request, 'jobs/jobs.html', context)
 
-# find_job(self=None)
+
+#cv_name = request.POST.get('cv_name', False)
+
