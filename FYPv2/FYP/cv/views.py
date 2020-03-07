@@ -102,12 +102,6 @@ def pdf_view(request):
         context = {'cv_path': file_name}
 
 
-
-
-
-    except FileNotFoundError:
-        raise Http404()
-
     return render(request, 'pages/cv-display.html', context)
 
 
