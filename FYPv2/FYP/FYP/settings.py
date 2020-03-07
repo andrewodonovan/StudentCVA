@@ -66,7 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+X_FRAME_OPTIONS = 'ALLOW-FROM http://127.0.0.1:8000'
 ROOT_URLCONF = 'FYP.urls'
 ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
 TEMPLATES = [

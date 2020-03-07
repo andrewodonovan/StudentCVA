@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from django.template import RequestContext
 from django.http import FileResponse, Http404
 from django.core.files.storage import FileSystemStorage
+
+from django.views.decorators.clickjacking import xframe_options_exempt
 from reportlab.pdfgen import canvas
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -79,13 +81,14 @@ class CvDelete(DeleteView):
 
 def simple_upload(request):
     form = CvUploadForm(request.POST, request.FILES)
-    if request.method == 'POST' and request.FILES['cv_file']:
-        cv_file = request.FILES['cv_file']
-        fs = FileSystemStorage()
-        cv_file_name = cv_file.name
-        print(cv_file_name)
-        filename = fs.save(cv_file_name, cv_file)
-        return pdf_view(request)
+    if form.is_valid():
+        if request.method == 'POST' and request.FILES['cv_file']:
+                cv_file = request.FILES['cv_file']
+                fs = FileSystemStorage()
+                filename = fs.save(cv_file.name, cv_file)
+                return pdf_view(request)
+
+
 
     return render(request, 'pages/cvupload.html', {'form':form})
 
@@ -93,13 +96,33 @@ def simple_upload(request):
 def pdf_view(request):
     cv_file = request.FILES['cv_file']
 
-    try:
-        if cv_file:
-            fs = FileSystemStorage()
-            file = fs.open(cv_file.name)
-            return FileResponse(file, content_type='application/pdf')
+    if cv_file:
+        fs = FileSystemStorage()
+        file_name = cv_file.name
+        context = {'cv_path': file_name}
+
+
+
+
+
     except FileNotFoundError:
         raise Http404()
+
+    return render(request, 'pages/cv-display.html', context)
+
+
+
+# Set the naming convention for the different sections
+file_name_format = 'section_#.txt'
+
+# Splitting function
+def text_splitter(fn):
+    # Apply the naming convention for the filename using the number passed into the function
+    filename = file_name_format.replace('#', str(fn))
+    # Write to the file and save the file to a variable
+    out = open(filename, 'w')
+    # Return the variable
+    return out
 
 
 # def create_pdf(request):
