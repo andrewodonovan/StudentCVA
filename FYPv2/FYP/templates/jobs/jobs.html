@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{%block title %}Any Jobs Going{% endblock %}
+{%block title %}Display Jobs{% endblock %}
 {% block content %}
     <div class="cv-container">
         <div class="CvContent">
@@ -8,22 +8,23 @@
             <hr class="bg-white w-25"/>
 
     <!-- https://stackoverflow.com/questions/32226716/multiple-for-loop-in-django-template -->
-            {% for jab, key, logo in jobs %}
+            {% for job, key, logo in jobs %}
 
             <div class="CvTable">
                 <table>
                     <tr>
                         <!-- https://stackoverflow.com/questions/7995080/html-if-image-is-not-found -->
-                        <td><img src="http://logo.clearbit.com/logo/{{logo}}.com" width="80" height="60" onerror="this.onerror=null; this.src='default.png'"></td>
-                        <td class="text-center"><b>{{ jab }}<b></td>
+                        <td><img src="http://logo.clearbit.com/logo/{{ logo }}.com" width="80" height="60" onerror="this.onerror=null; this.src='/media/default.png'"></td>
+                        <td class="text-center"><b>{{ job }}<b></td>
                     </tr>
                     <tr>
                         <td><hr/></td>
                     </tr>
                     <tr>
-                        <td>
+                        <td colspan="2">
                             <div class="form-button-container">
-                                <a href="https://ie.indeed.com/viewjob?jk={{ key }}" class="btn  btn-success ">View</a>
+                                <a href="https://ie.indeed.com/viewjob?jk={{ key }}" class="form-button btn" id="view">View</a>
+                               <a href="{% url 'keywords' key=key %}" class="form-button btn" id="edit">Create CV</a>
                             </div>
                         </td>
 

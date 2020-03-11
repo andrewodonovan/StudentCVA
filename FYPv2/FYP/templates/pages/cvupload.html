@@ -9,18 +9,30 @@ https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-wi
 {% block title %}Upload CV{% endblock %}
 
 {% block content %}
- <div class="cv-container">
-        <div class="CvContent">
+<div class="cv-container">
+
+    <div class="CvContent">
         <h1 class="text-center cv-h1">Upload CV</h1>
-            <hr class="bg-white w-25"/>
-            <div class="CvTable">
-             <form method="post" enctype="multipart/form-data">
-               {% csrf_token %}
+
+        <hr class="bg-white w-25"/>
+        <div class="CvTable">
+        {% if messages %}
+            {% for message in messages %}
+            {% if forloop.last %}
+                {% if 'error' in message.tags %}
+                    <div style="color: red;" alert w-100 text-capitalize font-weight-bold text-center form-control {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+                    <br />
+                {% endif %}
+            {% endif %}
+            {% endfor %}
+        {% endif %}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 {{ form.as_p }}
                 <input class="btn btn-success" type="submit" value="Upload">
             </form>
-            </div>
         </div>
- </div>
+    </div>
+</div>
 
 {% endblock %}

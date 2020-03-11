@@ -1,0 +1,98 @@
+['ANDREW O’ DONOVAN~
+Rosehill House,~
+Castletreasure,~
+Douglas,~
+Cork~
+andrewodonovan97@gmail.com~
+Tel (+353)87 334 7428~
+--BLANK_LINE_DO_NOT_READ--
+>PERSONAL STATEMENT:
+Incoming Final Year Business Information Systems student at University College Cork with a passion for IT.
+Demonstrates superb technical and interpersonal capabilities.
+Worked as part of a dynamic, fast-paced IT Support team.
+Seeking opportunities as a part-time Technical Support Engineer.
+--BLANK_LINE_DO_NOT_READ--
+>KEY SKILLS:
+Excellent problem-solving skills.
+Outstanding communication and interpersonal skills.
+Deep knowledge of Operating Systems and virtualized VMware environments.
+--BLANK_LINE_DO_NOT_READ--
+>EDUCATION:
+~
+Business Information Systems at University College Cork~
+2016 – 2020 ~
+St. Francis College, Rochestown~
+2010 – 2016 ~
+--BLANK_LINE_DO_NOT_READ--
+>RESULTS:
+~
+~
+Business Information Systems Year 3 – 2H1~
+71% in ‘Organisational IS Infrastructure’.
+~
+Business Information Systems Year 2 – 2H1~
+85% in ‘Introduction to Java Programming’, 70% in ‘OO Application Design & Development’, 75% in ‘Visual Programming’.
+~
+Business Information Systems Year 1 – 2H1~
+85% in ‘Introduction to Technology and The Internet’, 84% in ‘Introduction to Internet Development’.
+~
+Leaving Certificate 2016 - 500 Points~
+A1 Grade in English ~
+--BLANK_LINE_DO_NOT_READ--
+>RELEVANT EXPERIENCE:
+~
+~
+VMware International Ltd. March 2019 – August 2019~
+~
+Technical Support Engineer Intern~
+Worked as part of the Systems Operations teams resolving technical issues regarding the vSphere product.
+Dealt with customers via phone, email and using the internal Salesforce Lightning system.
+Completed 12 weeks intensive technical training including ‘Install, Configure & Manage vSphere 6,7’, ‘Build My Labs vSphere 6,7’ and ‘Troubleshooting vSphere 6,7’.
+~
+Acting Duty Manager~
+Acted as Duty Manager for three weeks in the absence of the vSAN Duty Manager.
+Handled inter -centre transfers from Bangalore, India in the mornings and to Broomfield, Colorado in the evenings.
+Organised the Live Call Queue schedule and prioritised resources between transfers and the Call Queue.
+~
+College Projects September 2016 – Present~
+~
+Highest result in the year in ‘Object Oriented Application Development and Design’ Project (90%)~
+Created a cryptocurrency market simulation in Java using the JavaFX framework.
+ \n\x0c', '~
+Highest result in the year in ‘Visual Programming’ Project (88%)~
+Created a system using Visual Basic and SQL to calculate and track students results.
+~
+Highest result in the year in ‘Principles and Practices of System Development’ Project (85%)~
+Designed, developed and executed an improved solution for the BIS placement process.
+~
+Highest result in the year in ‘Introduction to Database Theory’ Project (80%)~
+Created a database system using MS Access, MySQL and VBA to handle theatre ticket bookings.
+--BLANK_LINE_DO_NOT_READ--
+>ADDITIONAL EXPERIENCE:
+~
+Smiggle Ireland December 2017 – January 2019~
+Responsible for meeting several targets from daily sales targets to daily email sign up targets.
+Using the POS system to serve customers involving regular cash handling.
+Providing excellent Customer Connections and ensuring customers have a pleasant and memorable visit to our store and will return in the future.
+~
+Reardens of Washington Street May 2017 – September 2017~
+Ensured that all spillages and breakages were dealt with promptly, preventing risk to the customers.
+Frequently checked on the bars and reacted accordingly to ensure the smooth running of the busy bars.
+~
+Argos Mahon October – December 2016~
+Ensured that the high customer service standards were upheld and served customers in a helpful and friendly manner.
+Ensured that the stockroom and the shelves were clean and tidy for efficient picking.
+--BLANK_LINE_DO_NOT_READ--
+>HOBBIES AND INTERESTS:
+Involved with the Cork/Kerry Showjumping branch for the past six years setting up and running the digital timing systems at every show in the region.
+This year I also joined the Showjumping Ireland Judges Panel and I’m now one of the youngest Showjumping Judges in the country.
+I judge and commentate regularly at Maryville Stables Equestrian Centre and various local Gymkhana events.
+I have a keen interest in Information Technology completing various home automation projects as well as projects using my Raspberry Pi.
+Class Representative for my BIS 2 Class.
+This involved a lot of organising and problem solving as well as excellent communication skills to act as intermediary between the students and department members to voice any concerns facing the student body.
+--BLANK_LINE_DO_NOT_READ--
+>REFEREES:
+Gerard Murphy, VMware International Ltd., Behan House, Barrack Square, Ballincollig , Cork~
+(086) 791 6289~
+Stephanie Larkin, BIS Placement Coordinator, Room 381 O’ Rahilly Building, University College Cork, College Rd, Cork~
+(021) 490 3345~

@@ -1,0 +1,28 @@
+>RELEVANT EXPERIENCE:
+~
+~
+VMware International Ltd. March 2019 – August 2019~
+~
+Technical Support Engineer Intern~
+Worked as part of the Systems Operations teams resolving technical issues regarding the vSphere product.
+Dealt with customers via phone, email and using the internal Salesforce Lightning system.
+Completed 12 weeks intensive technical training including ‘Install, Configure & Manage vSphere 6,7’, ‘Build My Labs vSphere 6,7’ and ‘Troubleshooting vSphere 6,7’.
+~
+Acting Duty Manager~
+Acted as Duty Manager for three weeks in the absence of the vSAN Duty Manager.
+Handled inter -centre transfers from Bangalore, India in the mornings and to Broomfield, Colorado in the evenings.
+Organised the Live Call Queue schedule and prioritised resources between transfers and the Call Queue.
+~
+College Projects September 2016 – Present~
+~
+Highest result in the year in ‘Object Oriented Application Development and Design’ Project (90%)~
+Created a cryptocurrency market simulation in Java using the JavaFX framework.
+ \n\x0c', '~
+Highest result in the year in ‘Visual Programming’ Project (88%)~
+Created a system using Visual Basic and SQL to calculate and track students results.
+~
+Highest result in the year in ‘Principles and Practices of System Development’ Project (85%)~
+Designed, developed and executed an improved solution for the BIS placement process.
+~
+Highest result in the year in ‘Introduction to Database Theory’ Project (80%)~
+Created a database system using MS Access, MySQL and VBA to handle theatre ticket bookings.

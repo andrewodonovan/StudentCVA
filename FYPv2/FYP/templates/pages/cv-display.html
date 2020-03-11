@@ -13,16 +13,17 @@
                 <table>
                     <tr>
                         <td>
-                            <h2>{{ cv_name }}</h2>
+                            <h2 class="text-dark text-center"><a href="/media/{{ cv_path }}" class="text-dark">{{ cv_name }} (Click to Dowload)</a></h2>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <div>
-                               <embed src="/media/{{ cv_path }}" type="application/pdf" style="height: 90vh; width: 70vw;">
+                               <embed src="/media/{{ cv_path }}" type="application/pdf" style="height: 85vh; width: 70vw;">
                             </div>
                         </td>
                     </tr>
+
                 </table>
 
             </div>

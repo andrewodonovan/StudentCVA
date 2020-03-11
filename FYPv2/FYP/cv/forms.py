@@ -12,18 +12,19 @@ class CvForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         # DO NOT REMOVE UNDER PENALTY OF DEATH!!!!!!!
-        initial_arguments = kwargs.get('initial', None)
-        initial_arguments_list = list(initial_arguments.values())
-        user_id = initial_arguments_list[0]
-        super(CvForm, self).__init__(*args, **kwargs)
-        self.fields['CvEducation'].queryset = Education.objects.filter(user__id=user_id)
-        self.fields['CvSkills'].queryset = Skills.objects.filter(user__id=user_id)
-        self.fields['CvWorkExperience'].queryset = WorkExperience.objects.filter(user__id=user_id)
+        # initial_arguments = kwargs.get('initial', None)
+        # initial_arguments_list = list(initial_arguments.values())
+        # user_id = initial_arguments_list[0]
+        # super(CvForm, self).__init__(*args, **kwargs)
+        # self.fields['CvEducation'].queryset = Education.objects.filter(user__id=user_id)
+        # self.fields['CvSkills'].queryset = Skills.objects.filter(user__id=user_id)
+        # self.fields['CvWorkExperience'].queryset = WorkExperience.objects.filter(user__id=user_id)
+        pass
 
 
 class CvUploadForm(forms.Form):
-    cv_file = forms.FileField( label='Select a PDF CV')
-    cv_name = forms.CharField(label='CV Name')
+    cv_file = forms.FileField( label='Select a PDF CV', required=False)
+    cv_name = forms.CharField(label='CV Name', required=False)
 
     def clean(self):
         cleaned_data = super(CvUploadForm, self).clean()

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{%block title %}Matches{% endblock %}
+{% block content %}
+    <div class="cv-container">
+        <div class="CvContent">
+        <h1 class="text-center cv-h1">Keywords</h1>
+            <hr class="bg-white w-25"/>
+
+    <!-- https://stackoverflow.com/questions/32226716/multiple-for-loop-in-django-template -->
+
+
+            <div class="CvTable">
+                <table>
+
+                    <tr>
+                        <td colspan="2">
+                            <div class="form-button-container">
+                               <a href="{% url 'create-cv'  %}" class="form-button btn" id="edit">Create CV</a>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                </table>
+
+            </div>
+           <br />
+
+            <div class="no-record-text alert-info">
+                <h5 class="text-center">No results found</h5>
+                <a href="{% url 'job-search' %}">Do you want to try different search terms?</a>
+            </div>
+            <br />
+        </div>
+
+    </div>
+
+{% endblock %}

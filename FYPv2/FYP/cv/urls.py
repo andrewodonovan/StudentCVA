@@ -10,6 +10,8 @@ urlpatterns = [
 
     path('upload-cv', views.simple_upload, name='upload_cv'),
     path('display-cv', views.pdf_view, name='display-cv'),
+    path('create-cv', views.create_cv_pdf, name='create-cv'),
+
 
 
 

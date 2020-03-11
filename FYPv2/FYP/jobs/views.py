@@ -1,35 +1,23 @@
 # My PDF manipulation library
-import re
-
 from bs4 import BeautifulSoup as bs
-import slate3k as slate
-
-from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-
-# import FYP
-# from pages.models import Job, CustomUser
-
-# Get top resumé words
-
-
 # Load Job Description
-import requests
-from django.shortcuts import render, redirect
-from requests import get
-
-from django.http import HttpResponseRedirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 from django.shortcuts import render
-
-
-#===============================================================
-# https://docs.djangoproject.com/en/3.0/topics/forms/
-#===============================================================
-
+from requests import get
 
 from .forms import JobForm
 
 
+# import FYP
+# from pages.models import Job, CustomUser
+# Get top resumé words
+# ===============================================================
+# https://docs.djangoproject.com/en/3.0/topics/forms/
+# ===============================================================
+
+@login_required
 def job_search(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -41,12 +29,14 @@ def job_search(request):
         form = JobForm()
     return render(request, 'jobs/job-search.html', {'form': form})
 
+@login_required
 def display_jobs(request):
     job_role = request.POST['job_role']
     job_loc = request.POST['job_location']
     url = "https://ie.indeed.com/jobs?q=" + job_role + "&l=" + job_loc
     response = get(url)
     html_soup = bs(response.text, 'html.parser')
+
     role_search = html_soup.findAll("a", class_="jobtitle")
     company_search = html_soup.findAll("span", class_="company")
     url_search = html_soup.findAll("div", class_="jobsearch-SerpJobCard")
@@ -101,7 +91,7 @@ def display_jobs(request):
     for k in job_ids:
         k_c += 1
 
-    #===========================================================================================
+    # ===========================================================================================
     #   Found Zipping Here:
     #   https://stackoverflow.com/questions/32226716/multiple-for-loop-in-django-template
     # ===========================================================================================
@@ -113,6 +103,97 @@ def display_jobs(request):
 
     return render(request, 'jobs/jobs.html', context)
 
+@login_required
+def keywords(request, key):
 
-#cv_name = request.POST.get('cv_name', False)
+    try:
+        sections = request.session['sections']
 
+        url = "https://ie.indeed.com/viewjob?jk=" + key
+        response = get(url)
+        html_soup = bs(response.text, 'html.parser')
+        html_soup.find('div', class_='jobsearch-Footer').decompose()
+        indeed_search = html_soup.findAll("li")
+
+        resume_url = "https://www.jobscan.co/blog/top-resume-keywords-boost-resume/"
+        resp = get(resume_url)
+        res_soup = bs(resp.text, 'html.parser')
+        res_soup.find('div', class_='mt-container').decompose()
+        res_soup.find('div', class_='mt-footer-widget-wrapper').decompose()
+        res_search = res_soup.findAll("li")
+
+        res_kw = []
+        for r in res_search:
+            r1 = r.getText()
+            res_kw.append(r1)
+
+        indeed_search_keywords = []
+        kw = []
+        for i_s in indeed_search:
+            i_s1 = i_s.getText()
+            indeed_search_keywords.append(i_s1)
+
+            request.session['indeed_search_keywords'] = indeed_search_keywords
+            request.session['online_res_keywords'] = res_kw
+
+        context = {
+            'keywords': indeed_search_keywords,
+            'sections': sections,
+            'res_kws': res_kw
+        }
+
+        return redirect('matches')
+    except:
+        messages.add_message(request, messages.ERROR,'Please Upload a CV before creating a tailored CV')
+        return redirect('upload_cv')
+
+
+    return render(request, 'jobs/keywords.html', context)
+
+@login_required
+def compare_strings(request):
+    context = {}
+    if request.method == 'POST':
+        try:
+            sections = request.session['sections']
+            indeed_search_keywords = request.session['indeed_search_keywords']
+            online_res_keywords = request.session['online_res_keywords']
+
+            res_matches = []
+            matches = []
+            for r in online_res_keywords:
+                for kw in indeed_search_keywords:
+                    found = kw.find(r)
+                    if found != -1:
+                        res_matches.append(r)
+
+            if len(res_matches) < 1:
+                print("No matches")
+
+            for r in res_matches:
+                for secs in sections:
+                    for section_line in secs:
+                        found = section_line.find(r)
+                        if found != -1:
+                            matches.append(section_line)
+
+
+            if len(matches) < 1:
+                print("No matches")
+
+            context = {
+                'res_matches': res_matches,
+                'matches': matches
+            }
+
+            request.session['matches'] = matches
+
+            return redirect('create-cv')
+
+        except:
+            messages.add_message(request, messages.INFO, 'Please Upload a CV before searching jobs')
+            return redirect('upload_cv')
+
+
+
+    return redirect('create-cv')
