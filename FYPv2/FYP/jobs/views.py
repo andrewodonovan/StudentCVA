@@ -1,4 +1,6 @@
 # My PDF manipulation library
+from enum import unique
+
 from bs4 import BeautifulSoup as bs
 # Load Job Description
 from django.contrib import messages
@@ -28,6 +30,7 @@ def job_search(request):
     else:
         form = JobForm()
     return render(request, 'jobs/job-search.html', {'form': form})
+
 
 @login_required
 def display_jobs(request):
@@ -103,9 +106,9 @@ def display_jobs(request):
 
     return render(request, 'jobs/jobs.html', context)
 
+
 @login_required
 def keywords(request, key):
-
     try:
         sections = request.session['sections']
 
@@ -133,8 +136,8 @@ def keywords(request, key):
             i_s1 = i_s.getText()
             indeed_search_keywords.append(i_s1)
 
-            request.session['indeed_search_keywords'] = indeed_search_keywords
-            request.session['online_res_keywords'] = res_kw
+        request.session['indeed_search_keywords'] = indeed_search_keywords
+        request.session['online_res_keywords'] = res_kw
 
         context = {
             'keywords': indeed_search_keywords,
@@ -144,56 +147,77 @@ def keywords(request, key):
 
         return redirect('matches')
     except:
-        messages.add_message(request, messages.ERROR,'Please Upload a CV before creating a tailored CV')
+        messages.add_message(request, messages.ERROR, 'Please Upload a CV before creating a tailored CV')
         return redirect('upload_cv')
 
-
     return render(request, 'jobs/keywords.html', context)
+
 
 @login_required
 def compare_strings(request):
     context = {}
-    if request.method == 'POST':
-        try:
-            sections = request.session['sections']
-            indeed_search_keywords = request.session['indeed_search_keywords']
-            online_res_keywords = request.session['online_res_keywords']
+    print("in MatcheS")
+    try:
+        print("In Try")
+        sections = request.session['sections']
+        indeed_search_keywords = request.session['indeed_search_keywords']
+        online_res_keywords = request.session['online_res_keywords']
 
-            res_matches = []
-            matches = []
-            for r in online_res_keywords:
-                for kw in indeed_search_keywords:
-                    found = kw.find(r)
+
+        res_matches = []
+        matches = []
+        matches_sections = []
+        for r in online_res_keywords:
+            for kw in indeed_search_keywords:
+                found = kw.find(r)
+                if found != -1:
+                    res_matches.append(r)
+
+        if len(res_matches) < 1:
+            print("No matches")
+
+
+        for r in res_matches:
+            for secs in sections:
+                for section_line in secs:
+                    found = section_line.find(r)
                     if found != -1:
-                        res_matches.append(r)
+                        matches.append(section_line)
 
-            if len(res_matches) < 1:
-                print("No matches")
+        matches = set(matches)
+        matches = list(matches)
+        ind_count = 0
+        if len(matches) < 1:
+            print("No matches")
+        else:
+            for m in matches:
+                print(m)
+                for r in res_matches:
+                    for secs in sections:
+                        for section_line in secs:
+                            if section_line.find(m) != -1:
+                                if ind_count < 1:
+                                    ind = sections.index(secs)
+                                    matches_sections.append(ind)
+                                    ind_count += 1
+                ind_count = 0
 
-            for r in res_matches:
-                for secs in sections:
-                    for section_line in secs:
-                        found = section_line.find(r)
-                        if found != -1:
-                            matches.append(section_line)
+                zipped_matches = zip(matches, matches_sections)
 
+        context = {
+            'res_matches': res_matches,
+            'matches': matches
 
-            if len(matches) < 1:
-                print("No matches")
+        }
 
-            context = {
-                'res_matches': res_matches,
-                'matches': matches
-            }
+        request.session['matches'] = matches
+        request.session['matches_sections'] = matches_sections
 
-            request.session['matches'] = matches
+        return redirect('create-cv')
 
-            return redirect('create-cv')
-
-        except:
-            messages.add_message(request, messages.INFO, 'Please Upload a CV before searching jobs')
-            return redirect('upload_cv')
-
+    except:
+        messages.add_message(request, messages.ERROR, 'Please Upload a CV before searching jobs')
+        return redirect('upload_cv')
 
 
     return redirect('create-cv')

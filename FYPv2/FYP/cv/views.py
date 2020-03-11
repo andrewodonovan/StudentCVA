@@ -9,12 +9,12 @@ from django.core.files.storage import FileSystemStorage
 ###########################################################################################
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, HRFlowable
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT
-from reportlab.lib.colors import black
+from reportlab.lib.colors import black, lightgrey, darkgrey
 ###########################################################################################
 
 from django.urls import reverse_lazy
@@ -308,6 +308,22 @@ def text_splitter(fn):
 
 @login_required
 def create_cv_pdf(request):
+    matches = request.session['matches']
+    matches_sections = request.session['matches_sections']
+    sections = request.session['sections']
+
+
+    for m in matches_sections:
+        m = int(m)
+        for ln in sections[m]:
+            for match in matches:
+                if ln.find(">") != -1 and ln.find(":"):
+                    continue
+                if ln.find() != -1:
+                    print(m)
+
+
+
     user = request.user
     tm = str(datetime.now())
     tm = tm.replace(" ", "")
@@ -318,10 +334,11 @@ def create_cv_pdf(request):
 
     path = "/tmp/Outputted_CV-" + "--" + str(user.username) + "--" + tm + ".pdf"
     doc = SimpleDocTemplate(path)
+
     styles = getSampleStyleSheet()
     Story = [Spacer(-1,-1*inch)]
     style = styles["Normal"]
-    sections = request.session['sections']
+
     sec_count = request.session['sec_count']
 
     for sec in sections:
@@ -429,6 +446,9 @@ def create_cv_pdf(request):
                 cv_heading_style.alignment = 0
                 cv_heading = Paragraph("<b>" + sec + "</b>", cv_heading_style)
                 Story.append(cv_heading)
+                hr = HRFlowable(width="100%", thickness=3, lineCap='round', color=black, spaceBefore=1, spaceAfter=1,
+                                hAlign='CENTER', vAlign='BOTTOM', dash=None)
+                Story.append(hr)
                 continue
 
             if sec in sections[1]:
@@ -469,5 +489,4 @@ def create_cv_pdf(request):
         response = HttpResponse(pdf, content_type='application/pdf')
         response['Content-Disposition'] = "attachment; filename=\"" + fn + "\""
         return response
-    request.session.delete()
     return response
